@@ -20,38 +20,49 @@ const services = [
   <Header />
   
   <section class="hero">
-    <div class="hero-bg">
-      <img src="/hero.png" alt="Recepcja Leśna Dental" />
-      <div class="overlay"></div>
-    </div>
-    <div class="container hero-content fade-in">
-      <h1>Nowoczesna stomatologia dla dorosłych i dzieci</h1>
-      <p>CBCT na miejscu &bull; Mikroskop &bull; Bezpłatne znieczulenie</p>
-      <div class="hero-actions">
-        <a href="#umow-wizyte" class="btn btn-filled">Umów wizytę</a>
+    <div class="container hero-container">
+      <div class="hero-text fade-in">
+        <h1>Nowoczesna stomatologia <br/><span class="gold-text">dla dorosłych i dzieci</span></h1>
+        <p>CBCT na miejscu &bull; Leczenie pod mikroskopem &bull; Bezpłatne znieczulenie</p>
+        <div class="hero-actions">
+          <a href="#umow-wizyte" class="btn btn-filled">Umów wizytę</a>
+          <a href="/cbct" class="btn">Tomografia CBCT</a>
+        </div>
       </div>
+    </div>
+    <div class="hero-image">
+      <img src="/hero.png" alt="Recepcja Leśna Dental" />
+      <div class="hero-gradient"></div>
     </div>
   </section>
 
   <section class="features">
     <div class="container features-grid">
       <div class="feature-card fade-in">
-        <div class="icon">🦷</div>
+        <div class="icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
         <h3>Dla dzieci i dorosłych</h3>
         <p>Kompleksowa opieka stomatologiczna dla całej rodziny.</p>
       </div>
       <div class="feature-card fade-in">
-        <div class="icon">📷</div>
+        <div class="icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4C5 4 4 6 4 9c0 4 3 6 3 11 0 1 .5 1.5 1 1.5s1-.5 1-1.5c0-3 .5-3 3-3s3 0 3 3c0 1 .5 1.5 1 1.5s1-.5 1-1.5c0-5 3-7 3-11 0-3-1-5-3-5s-3 1.5-4 1.5S9 4 7 4z"></path></svg>
+        </div>
         <h3>Tomografia CBCT na miejscu</h3>
         <p>Nowoczesna diagnostyka 3D bez konieczności wizyty w innej placówce.</p>
       </div>
       <div class="feature-card fade-in">
-        <div class="icon">🔬</div>
+        <div class="icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"></path><path d="M3 22h18"></path><path d="M14 22a7 7 0 1 0 0-14h-1"></path><path d="M9 14h2"></path><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"></path><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"></path></svg>
+        </div>
         <h3>Leczenie pod mikroskopem</h3>
         <p>Precyzja, bezpieczeństwo i większa dokładność wykonywanych zabiegów.</p>
       </div>
       <div class="feature-card fade-in">
-        <div class="icon">🕊️</div>
+        <div class="icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </div>
         <h3>Komfort bez bólu</h3>
         <p>Znieczulenie do zabiegu podawane bezpłatnie na życzenie Pacjenta.</p>
       </div>
@@ -97,6 +108,7 @@ const services = [
         <div class="quote-card">
           <p class="quote">„Jakość to troska o Pacjenta na każdym etapie leczenia.”</p>
           <p class="author">Karolina Wrzosek</p>
+          <p class="author-subtitle">właścicielka Leśna Dental, lekarz dentysta</p>
         </div>
       </div>
     </div>
@@ -117,47 +129,61 @@ const services = [
 <style>
   .hero {
     position: relative;
-    height: 90vh;
-    min-height: 600px;
+    min-height: 85vh;
     display: flex;
     align-items: center;
+    background-color: var(--bg-darker);
+    overflow: hidden;
   }
-  .hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .hero-container {
+    position: relative;
+    z-index: 2;
     width: 100%;
-    height: 100%;
-    z-index: -1;
   }
-  .hero-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .hero-text {
+    max-width: 650px;
+    padding: 40px 0;
   }
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(28,28,28,0.95) 0%, rgba(28,28,28,0.7) 50%, rgba(28,28,28,0.3) 100%);
-  }
-  .hero-content {
-    max-width: 800px;
-  }
-  .hero-content h1 {
+  .hero-text h1 {
     font-size: 3.5rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.2;
     color: var(--text-light);
   }
-  .hero-content p {
-    font-size: 1.2rem;
+  .gold-text {
     color: var(--primary-gold);
+  }
+  .hero-text p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
     margin-bottom: 40px;
     letter-spacing: 1px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 20px;
+  }
+  .hero-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    z-index: 1;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--bg-darker) 0%, rgba(18,18,18,0.8) 20%, rgba(18,18,18,0) 100%);
   }
   
   .features {
@@ -322,27 +348,33 @@ const services = [
     position: relative;
   }
   .quote-card::before {
-    content: '"';
+    content: '“';
     position: absolute;
     top: -20px;
     left: 20px;
     font-size: 8rem;
     color: var(--primary-gold);
     opacity: 0.2;
-    font-family: serif;
+    font-family: "Times New Roman", Times, serif;
+    line-height: 1;
   }
   .quote {
     font-size: 1.3rem;
     font-style: italic;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     position: relative;
     z-index: 1;
   }
   .author {
-    font-weight: 600;
+    font-family: var(--font-handwritten);
+    font-size: 2.5rem;
+    font-weight: 400;
     color: var(--primary-gold);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+  .author-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-gray);
   }
 
   .map-section {
@@ -364,9 +396,10 @@ const services = [
     .cbct-content, .about-content {
       flex-direction: column;
     }
-    .hero-content h1 {
-      font-size: 2.5rem;
-    }
+    .hero-image { width: 100%; opacity: 0.4; }
+    .hero-gradient { background: linear-gradient(to right, var(--bg-darker) 0%, rgba(18,18,18,0.7) 100%); }
+    .hero-text h1 { font-size: 2.5rem; }
+    .hero-actions { flex-direction: column; }
   }
 </style>
 
