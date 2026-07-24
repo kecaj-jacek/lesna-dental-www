@@ -102,14 +102,17 @@ const services = [
       <div class="about-text">
         <h2>O NAS</h2>
         <p>Leśna Dental to gabinet stworzony z pasji do stomatologii i troski o komfort naszych Pacjentów. W naszym gabinecie stomatologicznym wierzymy, że zdrowy i piękny uśmiech to nie tylko efekt profesjonalnego leczenia, ale także atmosfery, zaufania i indywidualnego podejścia do każdego Pacjenta.</p>
-        <a href="/o-nas" class="btn btn-filled" style="margin-top: 20px;">Poznaj nas lepiej</a>
-      </div>
-      <div class="about-quote">
-        <div class="quote-card">
+        
+        <div class="quote-card" style="margin-top: 40px; margin-bottom: 40px;">
           <p class="quote">„Jakość to troska o Pacjenta na każdym etapie leczenia.”</p>
           <p class="author">Karolina Wrzosek</p>
           <p class="author-subtitle">właścicielka Leśna Dental, lekarz dentysta</p>
         </div>
+
+        <a href="/o-nas" class="btn btn-filled">Poznaj nas lepiej</a>
+      </div>
+      <div class="about-image" style="flex: 1;">
+        <img src="/about.png" alt="O nas" style="width: 100%; border-radius: 8px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);" />
       </div>
     </div>
   </section>
@@ -236,13 +239,10 @@ const services = [
   }
   .cbct-text h2 {
     color: var(--primary-gold);
-    font-size: 1rem;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
   }
   .cbct-text h3 {
-    font-size: 2.5rem;
-    margin-bottom: 25px;
+    display: none;
   }
   .cbct-text p {
     color: var(--text-gray);
@@ -330,47 +330,44 @@ const services = [
     flex: 1;
   }
   .about-text h2 {
-    font-size: 2.2rem;
+    color: var(--primary-gold);
     margin-bottom: 30px;
   }
   .about-text p {
     font-size: 1.1rem;
     line-height: 1.8;
   }
-  .about-quote {
-    flex: 1;
-  }
   .quote-card {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     position: relative;
+    padding-left: 30px;
+    margin: 30px 0;
   }
   .quote-card::before {
     content: '“';
     position: absolute;
-    top: -20px;
-    left: 20px;
+    top: -40px;
+    left: -10px;
     font-size: 8rem;
     color: var(--primary-gold);
     opacity: 0.2;
     font-family: "Times New Roman", Times, serif;
     line-height: 1;
+    z-index: 0;
   }
   .quote {
     font-size: 1.3rem;
     font-style: italic;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     position: relative;
     z-index: 1;
+    line-height: 1.6;
   }
   .author {
     font-family: var(--font-handwritten);
     font-size: 2.5rem;
     font-weight: 400;
     color: var(--primary-gold);
-    margin-bottom: 5px;
+    margin-bottom: 2px;
   }
   .author-subtitle {
     font-size: 0.9rem;
