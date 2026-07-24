@@ -1,0 +1,45 @@
+---
+---
+<a href="#umow-wizyte" class="sticky-cta">
+  <span>Umów Wizytę</span>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+    <polyline points="22,6 12,13 2,6"></polyline>
+  </svg>
+</a>
+
+<style>
+  .sticky-cta {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--primary-gold);
+    color: var(--bg-darker);
+    padding: 15px 25px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    z-index: 90;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  .sticky-cta:hover {
+    background-color: var(--primary-gold-hover);
+    transform: translateY(-5px);
+    color: var(--bg-darker);
+  }
+  @media (max-width: 768px) {
+    .sticky-cta {
+      bottom: 20px;
+      right: 20px;
+      padding: 15px;
+      border-radius: 50%;
+    }
+    .sticky-cta span {
+      display: none;
+    }
+  }
+</style>

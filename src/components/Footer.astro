@@ -1,0 +1,87 @@
+---
+---
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="/logo.svg" alt="Leśna Dental" class="footer-logo" />
+        <p>Nowoczesna stomatologia dla dzieci i dorosłych.</p>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Adres</h3>
+        <p>ul. Leśna 12<br />12-345 Twoje Miasto</p>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Kontakt</h3>
+        <p><a href="tel:+48123456789">+48 123 456 789</a></p>
+        <p><a href="mailto:kontakt@lesnadental.pl">kontakt@lesnadental.pl</a></p>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Godziny Otwarcia</h3>
+        <p>Pon - Pt: 8:00 - 20:00<br />Sobota: 9:00 - 14:00</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} Leśna Dental. Wszelkie prawa zastrzeżone.</p>
+      <div class="footer-links">
+        <a href="/polityka-prywatnosci">Polityka prywatności (RODO)</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--bg-darker);
+    padding: 60px 0 20px;
+    border-top: 1px solid var(--border-gray);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-logo {
+    height: 50px;
+    margin-bottom: 15px;
+  }
+  .footer-col h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+  }
+  .footer-col p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+  .footer-col a {
+    color: var(--text-gray);
+    transition: color 0.3s;
+  }
+  .footer-col a:hover {
+    color: var(--primary-gold);
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-gray);
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .footer-links a {
+    margin-left: 20px;
+  }
+</style>

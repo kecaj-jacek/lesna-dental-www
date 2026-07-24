@@ -1,0 +1,92 @@
+---
+---
+<div id="cookie-banner" class="cookie-banner hidden">
+  <div class="cookie-content">
+    <p>Używamy plików cookies w celu prawidłowego działania strony, analizy ruchu i optymalizacji. <a href="/polityka-prywatnosci">Czytaj więcej w Polityce Prywatności</a>.</p>
+    <div class="cookie-actions">
+      <button id="cookie-accept" class="btn btn-filled">Akceptuję</button>
+      <button id="cookie-decline" class="btn">Odrzuć</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(28, 28, 28, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border-gray);
+    padding: 20px;
+    z-index: 1000;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-out;
+  }
+  .cookie-banner.show {
+    transform: translateY(0);
+  }
+  .cookie-banner.hidden {
+    display: none;
+  }
+  .cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  .cookie-content p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin: 0;
+  }
+  .cookie-content a {
+    color: var(--primary-gold);
+    text-decoration: underline;
+  }
+  .cookie-actions {
+    display: flex;
+    gap: 15px;
+  }
+  .cookie-actions .btn {
+    padding: 8px 20px;
+    font-size: 0.8rem;
+  }
+  @media (max-width: 768px) {
+    .cookie-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('cookie-banner');
+    const btnAccept = document.getElementById('cookie-accept');
+    const btnDecline = document.getElementById('cookie-decline');
+
+    if (!localStorage.getItem('cookies-accepted')) {
+      banner?.classList.remove('hidden');
+      setTimeout(() => banner?.classList.add('show'), 1000);
+    }
+
+    const closeBanner = () => {
+      banner?.classList.remove('show');
+      setTimeout(() => banner?.classList.add('hidden'), 500);
+    }
+
+    btnAccept?.addEventListener('click', () => {
+      localStorage.setItem('cookies-accepted', 'true');
+      closeBanner();
+    });
+
+    btnDecline?.addEventListener('click', () => {
+      localStorage.setItem('cookies-accepted', 'false');
+      closeBanner();
+    });
+  });
+</script>

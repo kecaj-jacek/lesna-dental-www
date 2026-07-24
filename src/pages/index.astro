@@ -1,0 +1,393 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+
+const services = [
+  { title: "Stomatologia zachowawcza", desc: "Zajmujemy się profilaktyką, diagnostyką oraz leczeniem próchnicy i jej powikłań. Pracujemy na najwyższej jakości materiałach kompozytowych, wykonując estetyczne wypełnienia, które przywracają zdrowie i naturalny wygląd zębów." },
+  { title: "Stomatologia dziecięca", desc: "Zapewniamy naszym najmłodszym Pacjentom przyjazną atmosferę oraz bezstresowe leczenie. Dbamy o zdrowy rozwój uzębienia poprzez profilaktykę, edukację i leczenie dostosowane do potrzeb dzieci." },
+  { title: "Endodoncja pod mikroskopem", desc: "Nowoczesne leczenie kanałowe pod mikroskopem pozwala na precyzyjne oczyszczenie i wypełnienie kanałów korzeniowych. Dzięki temu możemy skutecznie ratować nawet bardzo zniszczone zęby." },
+  { title: "Protetyka", desc: "Odbudowujemy utracone lub uszkodzone zęby, przywracając estetykę uśmiechu i komfort codziennego funkcjonowania." },
+  { title: "Chirurgia", desc: "Wykonujemy zabiegi chirurgiczne, takie jak usuwanie zębów, w tym zębów zatrzymanych, oraz przygotowanie jamy ustnej do dalszego leczenia." },
+  { title: "Higienizacja i profilaktyka", desc: "Regularna higienizacja pozwala skutecznie usuwać kamień nazębny, osad i przebarwienia. Zabiegi profilaktyczne pomagają zapobiegać próchnicy oraz chorobom dziąseł i przyzębia." },
+  { title: "Wybielanie", desc: "Profesjonalne wybielanie zębów pozwala rozjaśnić uśmiech w przewidywalny i skuteczny sposób. Zabieg wykonywany pod kontrolą lekarza jest bezpieczny i zapewnia naturalny efekt." }
+];
+---
+
+<Layout title="Strona Główna">
+  <Header />
+  
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="/hero.png" alt="Recepcja Leśna Dental" />
+      <div class="overlay"></div>
+    </div>
+    <div class="container hero-content fade-in">
+      <h1>Nowoczesna stomatologia dla dorosłych i dzieci</h1>
+      <p>CBCT na miejscu &bull; Mikroskop &bull; Bezpłatne znieczulenie</p>
+      <div class="hero-actions">
+        <a href="#umow-wizyte" class="btn btn-filled">Umów wizytę</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container features-grid">
+      <div class="feature-card fade-in">
+        <div class="icon">🦷</div>
+        <h3>Dla dzieci i dorosłych</h3>
+        <p>Kompleksowa opieka stomatologiczna dla całej rodziny.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="icon">📷</div>
+        <h3>Tomografia CBCT na miejscu</h3>
+        <p>Nowoczesna diagnostyka 3D bez konieczności wizyty w innej placówce.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="icon">🔬</div>
+        <h3>Leczenie pod mikroskopem</h3>
+        <p>Precyzja, bezpieczeństwo i większa dokładność wykonywanych zabiegów.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="icon">🕊️</div>
+        <h3>Komfort bez bólu</h3>
+        <p>Znieczulenie do zabiegu podawane bezpłatnie na życzenie Pacjenta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cbct-banner">
+    <div class="container cbct-content fade-in">
+      <div class="cbct-text">
+        <h2>Diagnostyka 3D na miejscu</h2>
+        <p>Wychodząc naprzeciw potrzebom Pacjentów, w naszym gabinecie dostępna jest nowoczesna diagnostyka CBCT. Badanie cechuje się wysoką dokładnością diagnostyczną przy jednocześnie niskiej dawce promieniowania.</p>
+        <a href="/cbct" class="btn btn-filled" style="margin-top: 20px;">Więcej o CBCT</a>
+      </div>
+      <div class="cbct-image">
+        <img src="/cbct.png" alt="Tomografia CBCT na miejscu" />
+      </div>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="container">
+      <h2 class="section-title fade-in">NASZE USŁUGI</h2>
+      <div class="services-grid">
+        {services.map((service, index) => (
+          <div class="service-card fade-in">
+            <h3>{service.title}</h3>
+            <p>{service.desc}</p>
+            <a href={`/uslugi#${service.title.toLowerCase().replace(/ /g, '-')}`} class="service-link">Więcej &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="container about-content fade-in">
+      <div class="about-text">
+        <h2>O NAS</h2>
+        <p>Leśna Dental to gabinet stworzony z pasji do stomatologii i troski o komfort naszych Pacjentów. W naszym gabinecie stomatologicznym wierzymy, że zdrowy i piękny uśmiech to nie tylko efekt profesjonalnego leczenia, ale także atmosfery, zaufania i indywidualnego podejścia do każdego Pacjenta.</p>
+        <a href="/o-nas" class="btn btn-filled" style="margin-top: 20px;">Poznaj nas lepiej</a>
+      </div>
+      <div class="about-quote">
+        <div class="quote-card">
+          <p class="quote">„Jakość to troska o Pacjenta na każdym etapie leczenia.”</p>
+          <p class="author">Karolina Wrzosek</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <!-- Map placeholder -->
+    <div class="map-placeholder">
+      <p>Mapa lokalizacji</p>
+    </div>
+  </section>
+
+  <Footer />
+  <StickyCTA />
+  <CookieBanner />
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+    height: 90vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+  }
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(28,28,28,0.95) 0%, rgba(28,28,28,0.7) 50%, rgba(28,28,28,0.3) 100%);
+  }
+  .hero-content {
+    max-width: 800px;
+  }
+  .hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: var(--text-light);
+  }
+  .hero-content p {
+    font-size: 1.2rem;
+    color: var(--primary-gold);
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+  }
+  
+  .features {
+    padding: 80px 0;
+    background-color: var(--bg-darker);
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+  .feature-card {
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 8px;
+    border-bottom: 3px solid var(--primary-gold);
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .feature-card:hover {
+    transform: translateY(-10px);
+  }
+  .feature-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  .feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+  .feature-card p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .cbct-banner {
+    background-color: var(--bg-card);
+    padding: 80px 0;
+  }
+  .cbct-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+  .cbct-text {
+    flex: 1;
+  }
+  .cbct-text h2 {
+    color: var(--primary-gold);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .cbct-text h3 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+  }
+  .cbct-text p {
+    color: var(--text-gray);
+    line-height: 1.7;
+  }
+  .cbct-image {
+    flex: 1;
+  }
+  .cbct-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+
+  .services {
+    padding: 100px 0;
+    background-color: var(--bg-dark);
+  }
+  .section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 60px;
+    position: relative;
+  }
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background-color: var(--primary-gold);
+    margin: 20px auto 0;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+  }
+  .service-card {
+    background-color: var(--bg-darker);
+    padding: 40px 30px;
+    border: 1px solid var(--border-gray);
+    border-radius: 8px;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .service-card:hover {
+    border-color: var(--primary-gold);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .service-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--primary-gold);
+  }
+  .service-card p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+  }
+  .service-link {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-light);
+    align-self: flex-start;
+  }
+  .service-link:hover {
+    color: var(--primary-gold);
+  }
+
+  .about {
+    padding: 100px 0;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+  }
+  .about-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+  .about-text {
+    flex: 1;
+  }
+  .about-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+  }
+  .about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  .about-quote {
+    flex: 1;
+  }
+  .quote-card {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    position: relative;
+  }
+  .quote-card::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 8rem;
+    color: var(--primary-gold);
+    opacity: 0.2;
+    font-family: serif;
+  }
+  .quote {
+    font-size: 1.3rem;
+    font-style: italic;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .author {
+    font-weight: 600;
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .map-section {
+    height: 400px;
+    background-color: var(--bg-card);
+  }
+  .map-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-gray);
+    font-size: 1.2rem;
+    border-top: 1px solid var(--border-gray);
+  }
+
+  @media (max-width: 992px) {
+    .cbct-content, .about-content {
+      flex-direction: column;
+    }
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+  
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    fadeElements.forEach(el => observer.observe(el));
+  });
+</script>

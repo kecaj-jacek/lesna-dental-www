@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+---
+<Layout title="O Nas">
+  <Header />
+  <main class="page-container container fade-in">
+    <h1>O Nas</h1>
+    <div class="content">
+      <p>W naszym gabinecie stomatologicznym wierzymy, że zdrowy i piękny uśmiech to nie tylko efekt profesjonalnego leczenia, ale także atmosfery, zaufania i indywidualnego podejścia do każdego Pacjenta.</p>
+      <p>Na pierwszym miejscu stawiamy jakość świadczonych usług oraz komfort osób, które powierzają nam swoje zdrowie. Korzystamy z nowoczesnych metod leczenia, sprawdzonych rozwiązań oraz najwyższej klasy materiałów. Nieustannie podnosimy nasze kwalifikacje, śledząc najnowsze osiągnięcia współczesnej stomatologii i uczestnicząc w licznych kursach doszkalających.</p>
+      <p>Doskonale rozumiemy, że wizyta u dentysty może wiązać się ze stresem i obawami. Dlatego dokładamy wszelkich starań, aby każdy Pacjent czuł się u nas spokojnie i bezpiecznie. Gwarantujemy leczenie bez bólu, a naszym Pacjentom oferujemy znieczulenie bezpłatnie, aby każda wizyta przebiegała w możliwie najbardziej komfortowych warunkach.</p>
+      <p class="signature">- Karolina Wrzosek</p>
+    </div>
+  </main>
+  <Footer />
+  <StickyCTA />
+</Layout>
+<style>
+  .page-container {
+    padding: 80px 20px;
+    min-height: 60vh;
+  }
+  h1 { margin-bottom: 40px; color: var(--primary-gold); }
+  .content p { line-height: 1.8; margin-bottom: 20px; color: var(--text-light); font-size: 1.1rem; }
+  .signature { font-style: italic; color: var(--primary-gold); margin-top: 40px; font-weight: bold; font-size: 1.2rem; }
+</style>
