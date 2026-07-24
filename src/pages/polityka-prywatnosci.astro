@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+
+const companyData = {
+  name: "Karolina Wrzosek prowadząca działalność pod firmą Karolina Wrzosek lekarz dentysta",
+  address: "ul. Leśna 8 lok. A.03, 05-230 Kobyłka",
+  nip: "1182032034",
+  regon: "365623178",
+  email: "kontakt@lesnadental.pl"
+};
+---
+<Layout title="Polityka Prywatności">
+  <Header />
+  <main class="page-container container fade-in">
+    <h1>Polityka Prywatności i Plików Cookies</h1>
+    <div class="content">
+      <h2>1. Administrator Danych Osobowych</h2>
+      <p>Administratorem Twoich danych osobowych jest <strong>{companyData.name}</strong>, z siedzibą pod adresem: {companyData.address}, NIP: {companyData.nip}, REGON: {companyData.regon} (dalej: "Administrator").</p>
+      
+      <h2>2. Kontakt z Administratorem</h2>
+      <p>We wszystkich sprawach związanych z przetwarzaniem danych osobowych możesz skontaktować się pod adresem e-mail: <a href={`mailto:${companyData.email}`}>{companyData.email}</a>.</p>
+      
+      <h2>3. Cele i podstawy przetwarzania</h2>
+      <p>Twoje dane osobowe przetwarzane są w celu:</p>
+      <ul>
+        <li>Świadczenia usług medycznych i stomatologicznych (art. 9 ust. 2 lit. h RODO).</li>
+        <li>Umawiania i zarządzania wizytami (art. 6 ust. 1 lit. b RODO).</li>
+        <li>Wypełniania obowiązków prawnych, w tym prowadzenia dokumentacji medycznej i rachunkowej (art. 6 ust. 1 lit. c RODO).</li>
+        <li>Odpowiadania na zapytania kierowane przez formularz kontaktowy lub e-mail (art. 6 ust. 1 lit. f RODO - prawnie uzasadniony interes).</li>
+      </ul>
+
+      <h2>4. Pliki Cookies</h2>
+      <p>Nasza strona internetowa wykorzystuje pliki cookies (ciasteczka) w celu zapewnienia jej prawidłowego działania, celach analitycznych oraz poprawy jakości świadczonych usług. Pliki cookies to niewielkie pliki tekstowe zapisywane na urządzeniu końcowym Użytkownika.</p>
+      <p>Wykorzystujemy cookies "niezbędne" do funkcjonowania strony oraz, za Twoją zgodą, cookies "analityczne" do badania ruchu.</p>
+      
+      <h2>5. Prawa Użytkownika</h2>
+      <p>Przysługuje Ci prawo do żądania dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, prawo do przenoszenia danych, prawo do wniesienia sprzeciwu wobec przetwarzania oraz prawo do wniesienia skargi do organu nadzorczego (Prezesa Urzędu Ochrony Danych Osobowych).</p>
+      
+      <h2>6. Odbiorcy danych</h2>
+      <p>Twoje dane mogą być powierzane podmiotom zewnętrznym wspierającym Administratora w działalności, np. dostawcom systemów informatycznych, zewnętrznemu systemowi umawiania wizyt oraz podmiotom świadczącym usługi księgowe, wyłącznie na podstawie odpowiednich umów powierzenia.</p>
+      
+      <p class="last-updated">Ostatnia aktualizacja: lipiec 2026</p>
+    </div>
+  </main>
+  <Footer />
+  <StickyCTA />
+</Layout>
+<style>
+  .page-container {
+    padding: 80px 20px;
+    min-height: 60vh;
+  }
+  h1 { margin-bottom: 40px; color: var(--primary-gold); }
+  h2 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 20px; color: var(--text-light); }
+  .content p, .content li { line-height: 1.8; margin-bottom: 15px; color: var(--text-gray); }
+  .content ul { list-style-type: disc; margin-left: 20px; margin-bottom: 30px; }
+  .content a { color: var(--primary-gold); text-decoration: underline; }
+  .last-updated { margin-top: 50px; font-style: italic; font-size: 0.9rem; }
+</style>
