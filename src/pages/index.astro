@@ -4,16 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import StickyCTA from '../components/StickyCTA.astro';
 import CookieBanner from '../components/CookieBanner.astro';
-
-const services = [
-  { title: "Stomatologia zachowawcza", desc: "Zajmujemy się profilaktyką, diagnostyką oraz leczeniem próchnicy i jej powikłań. Pracujemy na najwyższej jakości materiałach kompozytowych, wykonując estetyczne wypełnienia, które przywracają zdrowie i naturalny wygląd zębów." },
-  { title: "Stomatologia dziecięca", desc: "Zapewniamy naszym najmłodszym Pacjentom przyjazną atmosferę oraz bezstresowe leczenie. Dbamy o zdrowy rozwój uzębienia poprzez profilaktykę, edukację i leczenie dostosowane do potrzeb dzieci." },
-  { title: "Endodoncja pod mikroskopem", desc: "Nowoczesne leczenie kanałowe pod mikroskopem pozwala na precyzyjne oczyszczenie i wypełnienie kanałów korzeniowych. Dzięki temu możemy skutecznie ratować nawet bardzo zniszczone zęby." },
-  { title: "Protetyka", desc: "Odbudowujemy utracone lub uszkodzone zęby, przywracając estetykę uśmiechu i komfort codziennego funkcjonowania." },
-  { title: "Chirurgia", desc: "Wykonujemy zabiegi chirurgiczne, takie jak usuwanie zębów, w tym zębów zatrzymanych, oraz przygotowanie jamy ustnej do dalszego leczenia." },
-  { title: "Higienizacja i profilaktyka", desc: "Regularna higienizacja pozwala skutecznie usuwać kamień nazębny, osad i przebarwienia. Zabiegi profilaktyczne pomagają zapobiegać próchnicy oraz chorobom dziąseł i przyzębia." },
-  { title: "Wybielanie", desc: "Profesjonalne wybielanie zębów pozwala rozjaśnić uśmiech w przewidywalny i skuteczny sposób. Zabieg wykonywany pod kontrolą lekarza jest bezpieczny i zapewnia naturalny efekt." }
-];
+import { services } from '../data/services';
 ---
 
 <Layout title="Strona Główna">
@@ -86,11 +77,11 @@ const services = [
     <div class="container">
       <h2 class="section-title fade-in">NASZE USŁUGI</h2>
       <div class="services-grid">
-        {services.map((service, index) => (
+        {services.map((service) => (
           <div class="service-card fade-in">
             <h3>{service.title}</h3>
             <p>{service.desc}</p>
-            <a href={`/uslugi#${service.title.toLowerCase().replace(/ /g, '-')}`} class="service-link">Więcej &rarr;</a>
+            <a href={`/uslugi#${service.slug}`} class="service-link">Więcej &rarr;</a>
           </div>
         ))}
       </div>
@@ -234,9 +225,6 @@ const services = [
     color: var(--primary-gold);
     margin-bottom: 25px;
   }
-  .cbct-text h3 {
-    display: none;
-  }
   .cbct-text p {
     color: var(--text-gray);
     line-height: 1.7;
@@ -378,25 +366,3 @@ const services = [
     .hero-actions { flex-direction: column; }
   }
 </style>
-
-<script>
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-  
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(el => observer.observe(el));
-  });
-</script>

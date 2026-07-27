@@ -3,29 +3,160 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import StickyCTA from '../components/StickyCTA.astro';
+import PageHeader from '../components/PageHeader.astro';
 ---
-<Layout title="O Nas">
+<Layout title="O Nas" description="Poznaj Leśna Dental – gabinet stomatologiczny w Kobyłce stworzony z pasji do stomatologii i troski o komfort Pacjentów.">
   <Header />
-  <main class="page-container container fade-in">
-    <h1>O Nas</h1>
-    <div class="content">
-      <p>W naszym gabinecie stomatologicznym wierzymy, że zdrowy i piękny uśmiech to nie tylko efekt profesjonalnego leczenia, ale także atmosfery, zaufania i indywidualnego podejścia do każdego Pacjenta.</p>
-      <p>Na pierwszym miejscu stawiamy jakość świadczonych usług oraz komfort osób, które powierzają nam swoje zdrowie. Korzystamy z nowoczesnych metod leczenia, sprawdzonych rozwiązań oraz najwyższej klasy materiałów. Nieustannie podnosimy nasze kwalifikacje, śledząc najnowsze osiągnięcia współczesnej stomatologii i uczestnicząc w licznych kursach doszkalających.</p>
-      <p>Doskonale rozumiemy, że wizyta u dentysty może wiązać się ze stresem i obawami. Dlatego dokładamy wszelkich starań, aby każdy Pacjent czuł się u nas spokojnie i bezpiecznie. Gwarantujemy leczenie bez bólu, a naszym Pacjentom oferujemy znieczulenie bezpłatnie, aby każda wizyta przebiegała w możliwie najbardziej komfortowych warunkach.</p>
-      <p class="author">Karolina Wrzosek</p>
-      <p class="author-subtitle">właścicielka Leśna Dental, lekarz dentysta</p>
+
+  <PageHeader
+    title="O Nas"
+    eyebrow="Poznaj Leśna Dental"
+    image="/about.png"
+  />
+
+  <main class="page-container">
+    <div class="container">
+      <p class="lead fade-in">W naszym gabinecie stomatologicznym wierzymy, że zdrowy i piękny uśmiech to nie tylko efekt profesjonalnego leczenia, ale także atmosfery, zaufania i indywidualnego podejścia do każdego Pacjenta.</p>
+
+      <div class="row fade-in">
+        <div class="row-media">
+          <img src="/hero.png" alt="Wnętrze gabinetu Leśna Dental" />
+        </div>
+        <div class="row-text">
+          <p>Na pierwszym miejscu stawiamy jakość świadczonych usług oraz komfort osób, które powierzają nam swoje zdrowie. Korzystamy z nowoczesnych metod leczenia, sprawdzonych rozwiązań oraz najwyższej klasy materiałów. Nieustannie podnosimy nasze kwalifikacje, śledząc najnowsze osiągnięcia współczesnej stomatologii i uczestnicząc w licznych kursach doszkalających.</p>
+        </div>
+      </div>
+
+      <div class="row row-reverse fade-in">
+        <div class="row-media">
+          <!-- Placeholder: room-tour po gabinecie. Docelowo podmienić na <iframe> z embedem YouTube. -->
+          <div class="video-placeholder" style={`background-image: url('/team.png')`}>
+            <div class="video-placeholder-overlay">
+              <span class="play-button" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+              <p>Wirtualny spacer po gabinecie<br/>— wideo już wkrótce</p>
+            </div>
+          </div>
+        </div>
+        <div class="row-text">
+          <p>Doskonale rozumiemy, że wizyta u dentysty może wiązać się ze stresem i obawami. Dlatego dokładamy wszelkich starań, aby każdy Pacjent czuł się u nas spokojnie i bezpiecznie. Gwarantujemy leczenie bez bólu, a naszym Pacjentom oferujemy znieczulenie bezpłatnie, aby każda wizyta przebiegała w możliwie najbardziej komfortowych warunkach.</p>
+        </div>
+      </div>
+
+      <div class="signature fade-in">
+        <p class="author">Karolina Wrzosek</p>
+        <p class="author-subtitle">właścicielka Leśna Dental, lekarz dentysta</p>
+      </div>
     </div>
   </main>
+
   <Footer />
   <StickyCTA />
 </Layout>
 <style>
   .page-container {
-    padding: 80px 20px;
-    min-height: 60vh;
+    padding: 90px 0 100px;
   }
-  h1 { margin-bottom: 40px; color: var(--primary-gold); }
-  .content p { line-height: 1.8; margin-bottom: 20px; color: var(--text-light); font-size: 1.1rem; }
-  .author { font-family: var(--font-handwritten); font-size: 2.5rem; color: var(--primary-gold); margin-top: 40px; margin-bottom: 5px; }
-  .author-subtitle { font-size: 0.9rem; color: var(--text-gray); }
+  .lead {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    max-width: 900px;
+    margin: 0 auto 80px;
+    text-align: center;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 80px;
+  }
+  .row-reverse {
+    flex-direction: row-reverse;
+  }
+  .row-media,
+  .row-text {
+    flex: 1;
+  }
+  .row-media img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    display: block;
+  }
+  .row-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+  }
+
+  .video-placeholder {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  }
+  .video-placeholder-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: rgba(18,18,18,0.6);
+    text-align: center;
+    padding: 20px;
+  }
+  .video-placeholder-overlay p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .play-button {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--primary-gold);
+    color: var(--bg-darker);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  .video-placeholder:hover .play-button {
+    background: var(--primary-gold-hover);
+    transform: scale(1.08);
+  }
+
+  .signature {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .author {
+    font-family: var(--font-handwritten);
+    font-size: 3rem;
+    color: var(--primary-gold);
+    margin-bottom: 5px;
+  }
+  .author-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+  }
+
+  @media (max-width: 900px) {
+    .row, .row-reverse {
+      flex-direction: column;
+    }
+    .lead {
+      font-size: 1.15rem;
+      margin-bottom: 50px;
+    }
+  }
 </style>

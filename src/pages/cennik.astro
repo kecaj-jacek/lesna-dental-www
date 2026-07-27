@@ -1,0 +1,185 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const categories = [
+  "Diagnostyka",
+  "Stomatologia zachowawcza",
+  "Stomatologia dziecięca",
+  "Endodoncja",
+  "Higiena i profilaktyka",
+  "Chirurgia",
+  "Protetyka",
+  "Estetyka",
+];
+
+const priceList = [
+  { name: "Konsultacja stomatologiczna", category: "Diagnostyka", price: "100 zł" },
+  { name: "Zdjęcie pantomograficzne (RTG)", category: "Diagnostyka", price: "100 zł" },
+  { name: "Tomografia CBCT", category: "Diagnostyka", price: "od 250 zł" },
+  { name: "Wypełnienie kompozytowe (ubytek mały)", category: "Stomatologia zachowawcza", price: "od 250 zł" },
+  { name: "Leczenie kanałowe pod mikroskopem (ząb jednokanałowy)", category: "Endodoncja", price: "od 700 zł" },
+  { name: "Higienizacja (skaling + piaskowanie)", category: "Higiena i profilaktyka", price: "300 zł" },
+  { name: "Lakowanie bruzd (ząb dziecięcy)", category: "Stomatologia dziecięca", price: "100 zł" },
+  { name: "Ekstrakcja zęba (usunięcie proste)", category: "Chirurgia", price: "od 250 zł" },
+  { name: "Korona porcelanowa na zębie własnym", category: "Protetyka", price: "od 1400 zł" },
+  { name: "Wybielanie zębów (gabinetowe)", category: "Estetyka", price: "900 zł" },
+];
+---
+<Layout title="Cennik" description="Przykładowy cennik usług stomatologicznych Leśna Dental w Kobyłce. Ostateczna wycena leczenia ustalana jest indywidualnie po konsultacji.">
+  <Header />
+
+  <PageHeader
+    title="Cennik"
+    eyebrow="Przejrzyste ceny"
+    subtitle="Poniżej przykładowe pozycje z naszej oferty. Filtruj po kategorii, aby szybciej znaleźć to, czego szukasz."
+  />
+
+  <main class="page-container">
+    <div class="container">
+      <div class="filters fade-in">
+        <button class="filter-btn active" data-filter="all">Wszystkie</button>
+        {categories.map((cat) => (
+          <button class="filter-btn" data-filter={cat}>{cat}</button>
+        ))}
+      </div>
+
+      <div class="price-table fade-in">
+        {priceList.map((item) => (
+          <div class="price-row" data-category={item.category}>
+            <div class="price-info">
+              <p class="price-name">{item.name}</p>
+              <p class="price-category">{item.category}</p>
+            </div>
+            <p class="price-value">{item.price}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="disclaimer fade-in">Powyższe ceny mają charakter orientacyjny i nie stanowią oferty w rozumieniu Kodeksu Cywilnego. Ostateczny koszt leczenia ustalany jest indywidualnie po konsultacji i badaniu stomatologicznym.</p>
+    </div>
+  </main>
+
+  <Footer />
+  <StickyCTA />
+</Layout>
+<style>
+  .page-container {
+    padding: 90px 0 100px;
+  }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 50px;
+  }
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border-gray);
+    color: var(--text-gray);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .filter-btn:hover {
+    border-color: var(--primary-gold);
+    color: var(--text-light);
+  }
+  .filter-btn.active {
+    background-color: var(--primary-gold);
+    border-color: var(--primary-gold);
+    color: var(--bg-darker);
+    font-weight: 600;
+  }
+
+  .price-table {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border-gray);
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 26px 10px;
+    border-bottom: 1px solid var(--border-gray);
+    transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.3s;
+  }
+  .price-row:hover {
+    background-color: var(--bg-card);
+  }
+  .price-name {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .price-category {
+    color: var(--primary-gold);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .price-value {
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 1.15rem;
+    white-space: nowrap;
+    font-family: var(--font-heading);
+  }
+
+  .disclaimer {
+    margin-top: 40px;
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .price-row {
+      align-items: flex-start;
+    }
+    .price-name {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const rows = document.querySelectorAll<HTMLDivElement>('.price-row');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+
+      rows.forEach((row) => {
+        const match = filter === 'all' || row.dataset.category === filter;
+        if (match) {
+          row.style.display = 'flex';
+          requestAnimationFrame(() => {
+            row.style.opacity = '1';
+            row.style.transform = 'translateY(0)';
+          });
+        } else {
+          row.style.opacity = '0';
+          row.style.transform = 'translateY(-6px)';
+          setTimeout(() => {
+            row.style.display = 'none';
+          }, 200);
+        }
+      });
+    });
+  });
+</script>

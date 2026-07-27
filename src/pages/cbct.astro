@@ -1,0 +1,177 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const steps = [
+  { title: "Rejestracja i wywiad", desc: "Umawiasz termin badania, a przed samym skanem lekarz przeprowadza krótki wywiad i ustala zakres diagnostyki." },
+  { title: "Przygotowanie do badania", desc: "Zdejmujesz metalowe elementy (biżuterię, okulary) i zajmujesz wygodną pozycję w aparacie CBCT." },
+  { title: "Skan 3D", desc: "Właściwe badanie trwa zaledwie kilkanaście sekund, przy niskiej dawce promieniowania." },
+  { title: "Analiza wyników", desc: "Lekarz omawia z Tobą trójwymiarowy obraz i na jego podstawie planuje dalsze leczenie." },
+];
+---
+<Layout title="Tomografia CBCT" description="Nowoczesna diagnostyka 3D CBCT w gabinecie Leśna Dental w Kobyłce – wysoka dokładność przy niskiej dawce promieniowania.">
+  <Header />
+
+  <PageHeader
+    title="Tomografia CBCT"
+    eyebrow="Diagnostyka 3D na miejscu"
+  />
+
+  <main class="page-container">
+    <div class="container intro-grid fade-in">
+      <div class="intro-text">
+        <p>Wychodząc naprzeciw potrzebom Pacjentów, w naszym gabinecie dostępna jest nowoczesna diagnostyka CBCT (tomografia komputerowa wiązki stożkowej), umożliwiająca uzyskanie trójwymiarowego obrazu zębów, kości oraz struktur twarzoczaszki. Badanie cechuje się wysoką dokładnością diagnostyczną przy jednocześnie niskiej dawce promieniowania w porównaniu z klasyczną tomografią komputerową. Dzięki precyzyjnemu obrazowaniu lekarz może trafniej zaplanować leczenie, zwiększając jego bezpieczeństwo i skuteczność.</p>
+        <p>Zapraszamy również lekarzy dentystów do kierowania swoich pacjentów na badania CBCT wykonywane w naszym gabinecie. Zapewniamy wysoką jakość obrazowania, sprawną realizację badań oraz przekazanie wyników w formie cyfrowej.</p>
+        <a href="/kontakt" class="btn btn-filled cta-btn">Umów badanie CBCT</a>
+      </div>
+      <div class="intro-media">
+        <img src="/cbct.png" alt="Tomograf CBCT w gabinecie Leśna Dental" />
+      </div>
+    </div>
+
+    <div class="steps-section">
+      <div class="container">
+        <h2 class="section-title fade-in">Jak przebiega badanie</h2>
+        <div class="steps">
+          {steps.map((step, i) => (
+            <div class="step fade-in" style={`transition-delay: ${i * 0.12}s`}>
+              <div class="step-number"><span>{i + 1}</span></div>
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+  <StickyCTA />
+</Layout>
+<style>
+  .page-container {
+    padding: 90px 0 0;
+  }
+  .intro-grid {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding-bottom: 100px;
+  }
+  .intro-text {
+    flex: 1;
+  }
+  .intro-text p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .cta-btn {
+    margin-top: 20px;
+  }
+  .intro-media {
+    flex: 1;
+  }
+  .intro-media img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    display: block;
+  }
+
+  .steps-section {
+    padding: 90px 0 110px;
+    background-color: var(--bg-card);
+  }
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 60px;
+    position: relative;
+  }
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background-color: var(--primary-gold);
+    margin: 20px auto 0;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 26px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-gray) 15%, var(--border-gray) 85%, transparent);
+  }
+  .step {
+    position: relative;
+    text-align: center;
+    padding: 0 10px;
+  }
+  .step-number {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--primary-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 22px;
+    position: relative;
+    z-index: 1;
+    animation: pulse-ring 2.8s ease-out infinite;
+  }
+  .step-number span {
+    color: var(--primary-gold);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  .step:nth-child(2) .step-number { animation-delay: 0.3s; }
+  .step:nth-child(3) .step-number { animation-delay: 0.6s; }
+  .step:nth-child(4) .step-number { animation-delay: 0.9s; }
+
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(176,141,87,0.35); }
+    70% { box-shadow: 0 0 0 10px rgba(176,141,87,0); }
+    100% { box-shadow: 0 0 0 0 rgba(176,141,87,0); }
+  }
+
+  .step h3 {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 10px;
+  }
+  .step p {
+    color: var(--text-gray);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .intro-grid {
+      flex-direction: column;
+    }
+    .steps {
+      grid-template-columns: 1fr;
+      gap: 45px;
+    }
+    .steps::before {
+      display: none;
+    }
+  }
+</style>

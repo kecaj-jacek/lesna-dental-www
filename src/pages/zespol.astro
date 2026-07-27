@@ -3,35 +3,96 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import StickyCTA from '../components/StickyCTA.astro';
+import PageHeader from '../components/PageHeader.astro';
 ---
-<Layout title="Nasz Zespół">
+<Layout title="Nasz Zespół" description="Poznaj zespół gabinetu Leśna Dental w Kobyłce – doświadczenie, ciągłe podnoszenie kwalifikacji i indywidualne podejście do Pacjenta.">
   <Header />
-  <main class="page-container container fade-in">
-    <h1>Nasz Zespół</h1>
-    <div class="team-member">
-      <img src="/team.png" alt="Zespół" class="team-img" />
-      <div class="team-info">
-        <h2>Karolina Wrzosek</h2>
-        <p class="specialty">Lekarz dentysta &bull; Stomatologia zachowawcza i estetyczna, protetyka</p>
-        <div class="bio">
-          <p>Jestem lekarzem dentystą z ponad 10-letnim doświadczeniem. Leczę zarówno dorosłych, jak i dzieci.</p>
-          <p>Na co dzień głównie zajmuję się leczeniem zachowawczym oraz pełnym zakresem leczenia protetycznego. Każdego dnia z pasją pomagam ludziom, którzy z różnych przyczyn stracili swoje naturalne zęby. Przeprowadzam leczenie odtwórcze w zakresie od pojedynczego zęba po pełne metamorfozy uśmiechu.</p>
-          <p>W mojej pracy wykorzystuję cyfrowe techniki planowania, skanery oraz materiały, które zapewniają trwałość i najwyższą estetykę wykonanych prac protetycznych. Zawsze dbam o stworzenie życzliwej, ciepłej atmosfery podczas wizyty.</p>
+
+  <PageHeader
+    title="Nasz Zespół"
+    eyebrow="Poznaj specjalistów"
+  />
+
+  <main class="page-container">
+    <div class="container">
+      <div class="team-member fade-in">
+        <img src="/team.png" alt="Karolina Wrzosek – lekarz dentysta" class="team-img" />
+        <div class="team-info">
+          <h2>Karolina Wrzosek</h2>
+          <p class="specialty">Lekarz dentysta &bull; Stomatologia zachowawcza i estetyczna, protetyka</p>
+          <div class="bio">
+            <p>Jestem lekarzem dentystą z ponad 10-letnim doświadczeniem. Leczę zarówno dorosłych, jak i dzieci.</p>
+            <p>Na co dzień głównie zajmuję się leczeniem zachowawczym oraz pełnym zakresem leczenia protetycznego. Każdego dnia z pasją pomagam ludziom, którzy z różnych przyczyn stracili swoje naturalne zęby. Przeprowadzam leczenie odtwórcze w zakresie od pojedynczego zęba po pełne metamorfozy uśmiechu.</p>
+            <p>W mojej pracy wykorzystuję cyfrowe techniki planowania, skanery oraz materiały, które zapewniają trwałość i najwyższą estetykę wykonanych prac protetycznych. Zawsze dbam o stworzenie życzliwej, ciepłej atmosfery podczas wizyty.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="credentials fade-in">
+        <h3 class="credentials-title">Kwalifikacje i certyfikaty</h3>
+        <div class="credentials-grid">
+          {[1, 2, 3].map(() => (
+            <div class="diploma-card">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary-gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"></path></svg>
+              <p>Skan dyplomu<br/>wkrótce</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </main>
+
   <Footer />
   <StickyCTA />
 </Layout>
 <style>
-  .page-container { padding: 80px 20px; min-height: 60vh; }
-  h1 { margin-bottom: 60px; color: var(--primary-gold); text-align: center; }
+  .page-container { padding: 90px 0 100px; }
   .team-member { display: flex; gap: 50px; align-items: flex-start; }
   .team-img { width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
   .team-info h2 { font-size: 2.5rem; margin-bottom: 10px; color: var(--text-light); }
-  .team-info h3 { font-size: 1.2rem; color: var(--primary-gold); margin-bottom: 5px; }
   .specialty { font-style: italic; color: var(--text-gray); margin-bottom: 30px; }
   .bio p { line-height: 1.8; margin-bottom: 15px; color: var(--text-light); }
-  @media (max-width: 768px) { .team-member { flex-direction: column; } }
+
+  .credentials {
+    margin-top: 90px;
+    padding-top: 60px;
+    border-top: 1px solid var(--border-gray);
+  }
+  .credentials-title {
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--primary-gold);
+    margin-bottom: 40px;
+  }
+  .credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+  .diploma-card {
+    border: 1px dashed var(--border-gray);
+    border-radius: 8px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+  .diploma-card:hover {
+    border-color: var(--primary-gold);
+  }
+  .diploma-card p {
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .team-member { flex-direction: column; }
+    .credentials-grid { grid-template-columns: 1fr; }
+  }
 </style>

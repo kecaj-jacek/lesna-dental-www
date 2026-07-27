@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { services } from '../data/services';
+---
+<Layout title="Usługi" description="Pełen zakres usług stomatologicznych Leśna Dental w Kobyłce – od stomatologii zachowawczej, przez endodoncję pod mikroskopem, po protetykę i chirurgię.">
+  <Header />
+
+  <PageHeader
+    title="Nasze Usługi"
+    eyebrow="Kompleksowa opieka"
+    subtitle="Od profilaktyki po zaawansowane leczenie – zakres usług dopasowany do potrzeb całej rodziny."
+  />
+
+  <main class="page-container">
+    <div class="container">
+      <div class="services-list">
+        {services.map((service) => (
+          <div class="service-row fade-in" id={service.slug}>
+            <div class="service-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--primary-gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" set:html={service.icon} />
+            </div>
+            <div class="service-body">
+              <h2>{service.title}</h2>
+              <p>{service.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="cta-banner fade-in">
+        <h3>Nie znalazłeś tego, czego szukasz?</h3>
+        <p>Skontaktuj się z nami — dobierzemy leczenie dopasowane do Twoich potrzeb.</p>
+        <a href="/kontakt" class="btn btn-filled">Skontaktuj się</a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+  <StickyCTA />
+</Layout>
+<style>
+  .page-container {
+    padding: 90px 0 100px;
+  }
+  .services-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .service-row {
+    display: flex;
+    gap: 35px;
+    padding: 45px 0;
+    border-bottom: 1px solid var(--border-gray);
+    scroll-margin-top: 100px;
+  }
+  .service-row:first-child {
+    padding-top: 0;
+  }
+  .service-icon {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s;
+  }
+  .service-row:hover .service-icon {
+    border-color: var(--primary-gold);
+  }
+  .service-body h2 {
+    font-size: 1.5rem;
+    color: var(--primary-gold);
+    margin-bottom: 12px;
+  }
+  .service-body p {
+    color: var(--text-gray);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .cta-banner {
+    margin-top: 70px;
+    text-align: center;
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    padding: 60px 30px;
+    border-bottom: 3px solid var(--primary-gold);
+  }
+  .cta-banner h3 {
+    color: var(--text-light);
+    margin-bottom: 15px;
+  }
+  .cta-banner p {
+    color: var(--text-gray);
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 600px) {
+    .service-row {
+      gap: 22px;
+    }
+    .service-icon {
+      width: 56px;
+      height: 56px;
+    }
+    .service-icon svg {
+      width: 30px;
+      height: 30px;
+    }
+    .service-body h2 {
+      font-size: 1.25rem;
+    }
+  }
+</style>

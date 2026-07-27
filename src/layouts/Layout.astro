@@ -14,8 +14,11 @@ const { title, description = "Nowoczesna stomatologia dla dzieci i dorosłych. L
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" type="image/png" href="/logo-white.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="shortcut icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<title>{title} | Leśna Dental</title>
@@ -24,3 +27,24 @@ const { title, description = "Nowoczesna stomatologia dla dzieci i dorosłych. L
 		<slot />
 	</body>
 </html>
+
+<script>
+	const observerOptions = {
+		root: null,
+		rootMargin: '0px',
+		threshold: 0.1
+	};
+
+	const observer = new IntersectionObserver((entries, observer) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+				observer.unobserve(entry.target);
+			}
+		});
+	}, observerOptions);
+
+	document.addEventListener('DOMContentLoaded', () => {
+		document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+	});
+</script>

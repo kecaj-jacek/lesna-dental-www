@@ -1,0 +1,103 @@
+---
+interface Props {
+  title: string;
+  eyebrow?: string;
+  subtitle?: string;
+  image?: string;
+}
+
+const { title, eyebrow, subtitle, image } = Astro.props;
+---
+
+<section class="page-header">
+  {image ? (
+    <div class="page-header-bg">
+      <img src={image} alt="" />
+      <div class="page-header-gradient"></div>
+    </div>
+  ) : (
+    <div class="page-header-pattern"></div>
+  )}
+  <div class="container page-header-content fade-in">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>{title}</h1>
+    {subtitle && <p class="subtitle">{subtitle}</p>}
+  </div>
+</section>
+
+<style>
+  .page-header {
+    position: relative;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-darker);
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-gray);
+  }
+  .page-header-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .page-header-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+  .page-header-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(18,18,18,0.55) 0%, rgba(18,18,18,0.85) 55%, var(--bg-darker) 100%);
+  }
+  .page-header-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(176,141,87,0.4) 1px, transparent 0);
+    background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(ellipse 60% 90% at 25% 40%, black 0%, transparent 75%);
+    mask-image: radial-gradient(ellipse 60% 90% at 25% 40%, black 0%, transparent 75%);
+  }
+  .page-header-pattern::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 15%, rgba(176,141,87,0.18), transparent 55%);
+  }
+  .page-header-content {
+    position: relative;
+    z-index: 2;
+    padding: 100px 20px 60px;
+  }
+  .eyebrow {
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  .page-header h1 {
+    color: var(--text-light);
+    font-size: 3rem;
+    margin-bottom: 0;
+  }
+  .subtitle {
+    color: var(--text-gray);
+    margin-top: 18px;
+    max-width: 620px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  @media (max-width: 768px) {
+    .page-header {
+      min-height: 260px;
+    }
+    .page-header-content {
+      padding: 80px 20px 40px;
+    }
+    .page-header h1 {
+      font-size: 2.2rem;
+    }
+  }
+</style>
