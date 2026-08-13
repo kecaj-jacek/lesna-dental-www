@@ -4,57 +4,50 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import StickyCTA from '../components/StickyCTA.astro';
 import PageHeader from '../components/PageHeader.astro';
-
-const categories = [
-  "Diagnostyka",
-  "Stomatologia zachowawcza",
-  "Stomatologia dziecięca",
-  "Endodoncja",
-  "Higiena i profilaktyka",
-  "Chirurgia",
-  "Protetyka",
-  "Estetyka",
-];
-
-const priceList = [
-  { name: "Konsultacja stomatologiczna", category: "Diagnostyka", price: "100 zł" },
-  { name: "Zdjęcie pantomograficzne (RTG)", category: "Diagnostyka", price: "100 zł" },
-  { name: "Tomografia CBCT", category: "Diagnostyka", price: "od 250 zł" },
-  { name: "Wypełnienie kompozytowe (ubytek mały)", category: "Stomatologia zachowawcza", price: "od 250 zł" },
-  { name: "Leczenie kanałowe pod mikroskopem (ząb jednokanałowy)", category: "Endodoncja", price: "od 700 zł" },
-  { name: "Higienizacja (skaling + piaskowanie)", category: "Higiena i profilaktyka", price: "300 zł" },
-  { name: "Lakowanie bruzd (ząb dziecięcy)", category: "Stomatologia dziecięca", price: "100 zł" },
-  { name: "Ekstrakcja zęba (usunięcie proste)", category: "Chirurgia", price: "od 250 zł" },
-  { name: "Korona porcelanowa na zębie własnym", category: "Protetyka", price: "od 1400 zł" },
-  { name: "Wybielanie zębów (gabinetowe)", category: "Estetyka", price: "900 zł" },
-];
+import { priceList } from '../data/cennik';
 ---
-<Layout title="Cennik" description="Przykładowy cennik usług stomatologicznych Leśna Dental w Kobyłce. Ostateczna wycena leczenia ustalana jest indywidualnie po konsultacji.">
+<Layout title="Cennik" description="Cennik usług stomatologicznych Leśna Dental w Kobyłce. Zapoznaj się z naszymi cenami zabiegów profilaktycznych, leczenia, protetyki i chirurgii.">
   <Header />
 
   <PageHeader
     title="Cennik"
     eyebrow="Przejrzyste ceny"
-    subtitle="Poniżej przykładowe pozycje z naszej oferty. Filtruj po kategorii, aby szybciej znaleźć to, czego szukasz."
+    subtitle="Poniżej znajdziesz szczegółowy cennik naszych usług. Kliknij wybraną kategorię, aby rozwinąć listę zabiegów."
   />
 
   <main class="page-container">
     <div class="container">
-      <div class="filters fade-in">
-        <button class="filter-btn active" data-filter="all">Wszystkie</button>
-        {categories.map((cat) => (
-          <button class="filter-btn" data-filter={cat}>{cat}</button>
-        ))}
-      </div>
-
-      <div class="price-table fade-in">
-        {priceList.map((item) => (
-          <div class="price-row" data-category={item.category}>
-            <div class="price-info">
-              <p class="price-name">{item.name}</p>
-              <p class="price-category">{item.category}</p>
+      <div class="accordion-container fade-in">
+        {priceList.map((category, catIndex) => (
+          <div class={`accordion-item ${catIndex === 0 ? 'active' : ''}`} data-index={catIndex}>
+            <button class="accordion-header" aria-expanded={catIndex === 0 ? 'true' : 'false'}>
+              <div class="header-content">
+                <span class="category-name">{category.categoryName}</span>
+                <span class="items-count">
+                  {category.items.length} {category.items.length === 1 ? 'pozycja' : (category.items.length % 10 >= 2 && category.items.length % 10 <= 4 && (category.items.length % 100 < 10 || category.items.length % 100 >= 20) ? 'pozycje' : 'pozycji')}
+                </span>
+              </div>
+              <span class="accordion-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="accordion-content" style={catIndex === 0 ? 'max-height: none;' : 'max-height: 0px;'}>
+              <div class="accordion-content-inner">
+                <div class="price-table">
+                  {category.items.map((item) => (
+                    <div class="price-row">
+                      <div class="price-info">
+                        <p class="price-name">{item.name}</p>
+                        {item.description && <p class="price-description">{item.description}</p>}
+                      </div>
+                      <p class="price-value">{item.price}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <p class="price-value">{item.price}</p>
           </div>
         ))}
       </div>
@@ -66,74 +59,149 @@ const priceList = [
   <Footer />
   <StickyCTA />
 </Layout>
+
 <style>
   .page-container {
     padding: 90px 0 100px;
   }
-  .filters {
+
+  .accordion-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-direction: column;
+    gap: 16px;
     margin-bottom: 50px;
   }
-  .filter-btn {
-    background: transparent;
+
+  .accordion-item {
+    background-color: var(--bg-card);
     border: 1px solid var(--border-gray);
-    color: var(--text-gray);
-    padding: 10px 20px;
-    border-radius: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .accordion-item:hover {
+    border-color: var(--primary-gold);
+  }
+
+  .accordion-item.active {
+    border-color: var(--primary-gold);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 28px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease;
+  }
+
+  .accordion-header:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .category-name {
+    color: var(--text-light);
+    font-size: 1.3rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+
+  .items-count {
+    color: var(--primary-gold);
     font-size: 0.85rem;
     font-family: var(--font-body);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    opacity: 0.8;
   }
-  .filter-btn:hover {
-    border-color: var(--primary-gold);
-    color: var(--text-light);
+
+  .accordion-icon {
+    color: var(--text-gray);
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
   }
-  .filter-btn.active {
-    background-color: var(--primary-gold);
-    border-color: var(--primary-gold);
-    color: var(--bg-darker);
-    font-weight: 600;
+
+  .accordion-item.active .accordion-icon {
+    transform: rotate(180deg);
+    color: var(--primary-gold);
+  }
+
+  .chevron {
+    width: 20px;
+    height: 20px;
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .accordion-content-inner {
+    padding: 0 28px 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .price-table {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid var(--border-gray);
   }
+
   .price-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: 20px;
-    padding: 26px 10px;
+    padding: 20px 0;
     border-bottom: 1px solid var(--border-gray);
-    transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.3s;
   }
-  .price-row:hover {
-    background-color: var(--bg-card);
+
+  .price-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
   }
+
+  .price-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
   .price-name {
     color: var(--text-light);
-    font-size: 1.1rem;
-    margin-bottom: 6px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin: 0;
   }
-  .price-category {
-    color: var(--primary-gold);
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+
+  .price-description {
+    color: var(--text-gray);
+    font-size: 0.88rem;
+    line-height: 1.4;
+    margin: 0;
   }
+
   .price-value {
-    color: var(--text-light);
+    color: var(--primary-gold);
     font-weight: 600;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     white-space: nowrap;
     font-family: var(--font-heading);
+    margin: 0;
   }
 
   .disclaimer {
@@ -144,42 +212,68 @@ const priceList = [
     line-height: 1.6;
   }
 
-  @media (max-width: 600px) {
-    .price-row {
-      align-items: flex-start;
+  @media (max-width: 768px) {
+    .accordion-header {
+      padding: 18px 20px;
     }
-    .price-name {
-      font-size: 1rem;
+    .accordion-content-inner {
+      padding: 0 20px 20px;
+    }
+    .category-name {
+      font-size: 1.15rem;
+    }
+    .price-row {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .price-value {
+      align-self: flex-start;
     }
   }
 </style>
 
 <script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const rows = document.querySelectorAll<HTMLDivElement>('.price-row');
+  const headers = document.querySelectorAll('.accordion-header');
 
-  buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      buttons.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
+  headers.forEach((header) => {
+    header.addEventListener('click', () => {
+      const item = header.closest('.accordion-item');
+      if (!item) return;
+      const content = item.querySelector('.accordion-content') as HTMLElement;
+      if (!content) return;
+      const isOpen = item.classList.contains('active');
 
-      rows.forEach((row) => {
-        const match = filter === 'all' || row.dataset.category === filter;
-        if (match) {
-          row.style.display = 'flex';
-          requestAnimationFrame(() => {
-            row.style.opacity = '1';
-            row.style.transform = 'translateY(0)';
-          });
-        } else {
-          row.style.opacity = '0';
-          row.style.transform = 'translateY(-6px)';
-          setTimeout(() => {
-            row.style.display = 'none';
-          }, 200);
-        }
-      });
+      if (isOpen) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        // Force layout reflow to register the starting height for transition
+        content.offsetHeight;
+        content.style.maxHeight = '0px';
+        item.classList.remove('active');
+        header.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('active');
+        header.setAttribute('aria-expanded', 'true');
+        content.style.maxHeight = content.scrollHeight + 'px';
+        
+        // After transition completes, set maxHeight to none for window resizing compatibility
+        setTimeout(() => {
+          if (item.classList.contains('active')) {
+            content.style.maxHeight = 'none';
+          }
+        }, 400);
+      }
     });
   });
+
+  // Observe elements with fade-in class for animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 </script>
+
