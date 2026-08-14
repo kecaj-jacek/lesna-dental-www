@@ -5,6 +5,16 @@ import Footer from '../components/Footer.astro';
 import StickyCTA from '../components/StickyCTA.astro';
 import PageHeader from '../components/PageHeader.astro';
 import { priceList } from '../data/cennik';
+
+const getPluralLabel = (count: number) => {
+  if (count === 1) return 'pozycja';
+  const lastDigit = count % 10;
+  const lastTwoDigits = count % 100;
+  if (lastDigit >= 2 && lastDigit <= 4 && (lastTwoDigits < 10 || lastTwoDigits >= 20)) {
+    return 'pozycje';
+  }
+  return 'pozycji';
+};
 ---
 <Layout title="Cennik" description="Cennik usług stomatologicznych Leśna Dental w Kobyłce. Zapoznaj się z naszymi cenami zabiegów profilaktycznych, leczenia, protetyki i chirurgii.">
   <Header />
@@ -24,7 +34,7 @@ import { priceList } from '../data/cennik';
               <div class="header-content">
                 <span class="category-name">{category.categoryName}</span>
                 <span class="items-count">
-                  {category.items.length} {category.items.length === 1 ? 'pozycja' : (category.items.length % 10 >= 2 && category.items.length % 10 <= 4 && (category.items.length % 100 < 10 || category.items.length % 100 >= 20) ? 'pozycje' : 'pozycji')}
+                  {category.items.length} {getPluralLabel(category.items.length)}
                 </span>
               </div>
               <span class="accordion-icon">
