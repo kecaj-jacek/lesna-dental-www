@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import BookingModal from '../components/BookingModal.astro';
 
 interface Props {
 	title: string;
@@ -25,6 +26,7 @@ const { title, description = "Nowoczesna stomatologia dla dzieci i dorosłych. L
 	</head>
 	<body>
 		<slot />
+		<BookingModal />
 	</body>
 </html>
 

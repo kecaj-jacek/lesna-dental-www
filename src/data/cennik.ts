@@ -104,104 +104,44 @@ export const priceList: PriceCategory[] = [
     categoryName: "Stomatologia zachowawcza",
     items: [
       {
-        name: "Badanie stomatologiczne",
-        description: null,
-        price: "od 100 zł"
-      },
-      {
-        name: "Wizyta adaptacyjna",
-        description: null,
-        price: "100 zł"
-      },
-      {
-        name: "Wizyta nieefektywna w przypadku braku współpracy",
-        description: "30 min",
-        price: "od 100 zł"
-      },
-      {
-        name: "Wypełnienie zęba mlecznego glassjonomerowe",
-        description: null,
-        price: "od 200 zł"
-      },
-      {
-        name: "Wypełnienie zęba mlecznego kompozytowe",
-        description: "białe lub kolorowe",
-        price: "od 250 zł"
-      },
-      {
-        name: "Wypełnienie zęba mlecznego lecznicze",
-        description: null,
-        price: "od 250 zł"
-      },
-      {
-        name: "Dewitalizacja/ otwarcie komory zęba mlecznego",
-        description: null,
-        price: "od 200 zł"
-      },
-      {
-        name: "Opatrunek",
-        description: null,
-        price: "150 zł"
-      },
-      {
-        name: "Usunięcie zęba mlecznego",
-        description: null,
-        price: "150 - 250 zł"
-      },
-      {
-        name: "Lakierowanie zębów mlecznych ( fluoryzacja)",
-        description: null,
-        price: "od 150 zł"
-      },
-      {
-        name: "Lakowanie",
-        description: null,
-        price: "od 120 zł"
-      },
-      {
-        name: "Lapisowanie",
-        description: null,
-        price: "od 150 zł"
-      },
-      {
         name: "Wypełnienie kompozytowe - małe",
         description: null,
-        price: "od 300 zł"
+        price: "300 zł"
       },
       {
         name: "Wypełnienie kompozytowe - średnie",
         description: null,
-        price: "od 350 zł"
+        price: "350 zł"
       },
       {
         name: "Wypełnienie kompozytowe - duże",
         description: null,
-        price: "od 400 zł"
+        price: "400 zł"
       },
       {
         name: "Rozległa odbudowa kompozytowa zęba",
         description: null,
-        price: "od 500 zł"
+        price: "500 zł"
       },
       {
         name: "Odbudowa zęba po leczeniu kanałowym",
         description: "w cenie wzmocnienie zęba materiałem z włóknem szklanym oraz wykonanie nakładu",
-        price: "od 600 zł"
+        price: "600 zł"
       },
       {
         name: "Nakład kompozytowy bezpośredni",
         description: null,
-        price: "od 600 zł"
+        price: "600 zł"
       },
       {
         name: "Wzmocnienie wypełnienia materiałem z włóknem szkalnym",
         description: null,
-        price: "od 100 zł"
+        price: "100 zł"
       },
       {
         name: "Bonding ( licówka kompozytowa bezpośrednia)",
         description: null,
-        price: "od 800 zł"
+        price: "800 zł"
       },
       {
         name: "Leczenie biologiczne- Biodentine",
@@ -226,13 +166,73 @@ export const priceList: PriceCategory[] = [
       {
         name: "ICON ( nieinwazyjne leczenie wczesnej próchnicy)",
         description: null,
-        price: "od 250 zł"
+        price: "250 zł"
       },
     ]
   },
   {
     categoryName: "Stomatologia dziecięca",
     items: [
+      {
+        name: "Badanie stomatologiczne",
+        description: null,
+        price: "100 zł"
+      },
+      {
+        name: "Wizyta adaptacyjna",
+        description: null,
+        price: "100 zł"
+      },
+      {
+        name: "Wizyta nieefektywna w przypadku braku współpracy",
+        description: "30 min",
+        price: "100 zł"
+      },
+      {
+        name: "Wypełnienie zęba mlecznego glassjonomerowe",
+        description: null,
+        price: "200 zł"
+      },
+      {
+        name: "Wypełnienie zęba mlecznego kompozytowe",
+        description: "białe lub kolorowe",
+        price: "250 zł"
+      },
+      {
+        name: "Wypełnienie zęba mlecznego lecznicze",
+        description: null,
+        price: "250 zł"
+      },
+      {
+        name: "Dewitalizacja/ otwarcie komory zęba mlecznego",
+        description: null,
+        price: "200 zł"
+      },
+      {
+        name: "Opatrunek",
+        description: null,
+        price: "150 zł"
+      },
+      {
+        name: "Usunięcie zęba mlecznego",
+        description: null,
+        price: "150 - 250 zł"
+      },
+      {
+        name: "Lakierowanie zębów mlecznych ( fluoryzacja)",
+        description: null,
+        price: "150 zł"
+      },
+      {
+        name: "Lakowanie",
+        description: null,
+        price: "120 zł"
+      },
+      {
+        name: "Lapisowanie",
+        description: null,
+        price: "150 zł"
+      },
     ]
   },
   {
@@ -251,42 +251,42 @@ export const priceList: PriceCategory[] = [
       {
         name: "Pierwotne leczenie kanałowe zęba pod mikroskopem - 1 kanał",
         description: "Cena zawiera: znieczulenie, koferdam, maszynowe opracowanie kanałów, wypełnienie kanałów gutaperką na ciepło, kontrolne zdjęcie RTG,  opatrunek.",
-        price: "od 800 zł"
+        price: "800 zł"
       },
       {
         name: "Pierwotne leczenie kanałowe zęba pod mikroskopem - 2 kanały",
         description: "Cena zawiera: znieczulenie, koferdam, maszynowe opracowanie kanałów, wypełnienie kanałów gutaperką na ciepło, kontrolne zdjęcie RTG,  opatrunek.",
-        price: "od 1000 zł"
+        price: "1000 zł"
       },
       {
         name: "Pierwotne leczenie kanałowe zęba pod mikroskopem - 3 kanały",
         description: "Cena zawiera: znieczulenie, koferdam, maszynowe opracowanie kanałów, wypełnienie kanałów gutaperką na ciepło, kontrolne zdjęcie RTG,  opatrunek.",
-        price: "od 1400 zł"
+        price: "1400 zł"
       },
       {
         name: "Pierwotne leczenie kanałowe zęba pod mikroskopem - 4 kanały",
         description: "Cena zawiera: znieczulenie, koferdam, maszynowe opracowanie kanałów, wypełnienie kanałów gutaperką na ciepło, kontrolne zdjęcie RTG,  opatrunek.",
-        price: "od 1600 zł"
+        price: "1600 zł"
       },
       {
         name: "Powtórne leczenie kanałowe pod mikroskopem - 1 kanał",
         description: "Cena zawiera: znieczulenie, koferdam, maszynowe opracowanie kanałów, wypełnienie kanałów gutaperką na ciepło, kontrolne zdjęcie RTG,  opatrunek.",
-        price: "od 1000 zł"
+        price: "1000 zł"
       },
       {
         name: "Powtórne leczenie kanałowe pod mikroskopem - 2 kanały",
         description: "Cena zawiera: znieczulenie, koferdam, maszynowe opracowanie kanałów, wypełnienie kanałów gutaperką na ciepło, kontrolne zdjęcie RTG,  opatrunek.",
-        price: "od 1200 zł"
+        price: "1200 zł"
       },
       {
         name: "Powtórne leczenie kanałowe pod mikroskopem - 3 kanały",
         description: "Cena zawiera: znieczulenie, koferdam, maszynowe opracowanie kanałów, wypełnienie kanałów gutaperką na ciepło, kontrolne zdjęcie RTG,  opatrunek.",
-        price: "od 1600 zł"
+        price: "1600 zł"
       },
       {
         name: "Powtórne leczenie kanałowe pod mikroskopem - 4 kanały",
         description: "Cena zawiera: znieczulenie, koferdam, maszynowe opracowanie kanałów, wypełnienie kanałów gutaperką na ciepło, kontrolne zdjęcie RTG,  opatrunek.",
-        price: "od 1800 zł"
+        price: "1800 zł"
       },
       {
         name: "Usunięcie złamanego narzędzia",
@@ -356,7 +356,7 @@ export const priceList: PriceCategory[] = [
       {
         name: "Nacięcie ropnia",
         description: "Cena zawiera znieczulenie, płukanie, sączek, receptę",
-        price: "od 250 zł"
+        price: "250 zł"
       },
       {
         name: "Plastyka wędzidełka",
@@ -371,17 +371,17 @@ export const priceList: PriceCategory[] = [
       {
         name: "Pobranie wycinka do badania histopatologicznego",
         description: null,
-        price: "od 250 zł"
+        price: "250 zł"
       },
       {
         name: "Leczenie suchego zębodołu",
         description: null,
-        price: "od 100 zł"
+        price: "100 zł"
       },
       {
         name: "Płukanie kieszeni dziąsłowej z aplikacją leku",
         description: null,
-        price: "od 150 zł"
+        price: "150 zł"
       },
     ]
   },
@@ -416,47 +416,47 @@ export const priceList: PriceCategory[] = [
       {
         name: "Cyfrowy projekt uśmiechu, wax-up/ ząb",
         description: null,
-        price: "od 150 zł"
+        price: "150 zł"
       },
       {
         name: "wkład koronowo- korzeniowy z włókna szklanego",
         description: null,
-        price: "od 600 zł"
+        price: "600 zł"
       },
       {
         name: "wkład koronowo- korzeniowy z włókna szklanego- kolejny",
         description: null,
-        price: "od 200 zł"
+        price: "200 zł"
       },
       {
         name: "wkład koronowo- korzeniowy metalowy pojedynczy",
         description: null,
-        price: "od 600 zł"
+        price: "600 zł"
       },
       {
         name: "wkład koronowo- korzeniowy metalowy składany",
         description: null,
-        price: "od 800 zł"
+        price: "800 zł"
       },
       {
         name: "wkład typu Rhein",
         description: null,
-        price: "od 900 zł"
+        price: "900 zł"
       },
       {
         name: "korona porcelanowa na metalu",
         description: null,
-        price: "od 1800 zł"
+        price: "1800 zł"
       },
       {
         name: "korona pełnoceramiczna E.max / cyrkonowa",
         description: null,
-        price: "od 2200 zł"
+        price: "2200 zł"
       },
       {
         name: "korona pełnoceramiczna dwukrzeminan litu/ ceramika skaleniowa",
         description: null,
-        price: "od 2400 zł"
+        price: "2400 zł"
       },
       {
         name: "korona lub licówka pełnoceramiczna- pracownia premium",
@@ -466,22 +466,22 @@ export const priceList: PriceCategory[] = [
       {
         name: "korona na implancie",
         description: null,
-        price: "od 3500 zł"
+        price: "3500 zł"
       },
       {
         name: "korona kompozytowa",
         description: null,
-        price: "od 1000 zł"
+        price: "1000 zł"
       },
       {
         name: "korona tymczasowa wykonana w gabinecie",
         description: null,
-        price: "od 250 zł"
+        price: "250 zł"
       },
       {
         name: "korona tymczasowa wykonana w pracowni",
         description: null,
-        price: "od 600 zł"
+        price: "600 zł"
       },
       {
         name: "zdjęcie korony/ mostu",
@@ -491,57 +491,57 @@ export const priceList: PriceCategory[] = [
       {
         name: "ponowne zacementowanie korony/mostu",
         description: null,
-        price: "od 250 zł"
+        price: "250 zł"
       },
       {
         name: "Licówka porcelanowa",
         description: null,
-        price: "od 2200 zł"
+        price: "2200 zł"
       },
       {
         name: "Licówka kompozytowa / bonding",
         description: null,
-        price: "od 800 zł"
+        price: "800 zł"
       },
       {
         name: "Licówka tymczasowa",
         description: null,
-        price: "od 200 zł"
+        price: "200 zł"
       },
       {
         name: "Inlay/onlay kompozytowy",
         description: null,
-        price: "od 1100 zł"
+        price: "1100 zł"
       },
       {
         name: "Inlay/onlay ceramiczny",
         description: null,
-        price: "od 1800 zł"
+        price: "1800 zł"
       },
       {
         name: "Most Maryland",
         description: null,
-        price: "od 1500 zł"
+        price: "1500 zł"
       },
       {
         name: "Proteza całkowita osiadająca",
         description: null,
-        price: "od 3000 zł"
+        price: "3000 zł"
       },
       {
         name: "Proteza częściowa osiadająca",
         description: null,
-        price: "od 2700 zł"
+        price: "2700 zł"
       },
       {
         name: "Proteza szkieletowa",
         description: null,
-        price: "od 3200 zł"
+        price: "3200 zł"
       },
       {
         name: "Mikroproteza do 3 zębów",
         description: null,
-        price: "od 900 zł"
+        price: "900 zł"
       },
       {
         name: "Proteza natychmiastowa",
@@ -551,22 +551,22 @@ export const priceList: PriceCategory[] = [
       {
         name: "Siatka wzmacniająca do protezy",
         description: null,
-        price: "od 350 zł"
+        price: "350 zł"
       },
       {
         name: "Klamra estetyczna",
         description: null,
-        price: "od 350 zł"
+        price: "350 zł"
       },
       {
         name: "Zasuwa/ zatrzask",
         description: null,
-        price: "od 500 zł"
+        price: "500 zł"
       },
       {
         name: "Podścielenie protezy",
         description: null,
-        price: "od 500 zł"
+        price: "500 zł"
       },
       {
         name: "Naprawa protezy",
@@ -586,7 +586,7 @@ export const priceList: PriceCategory[] = [
       {
         name: "Szynowanie zębów włóknem szklanym",
         description: null,
-        price: "od 200 zł"
+        price: "200 zł"
       },
     ]
   },

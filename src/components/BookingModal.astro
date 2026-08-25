@@ -1,0 +1,279 @@
+---
+---
+<div id="booking-modal" class="booking-modal" aria-hidden="true">
+  <div class="booking-overlay" data-close></div>
+  <div class="booking-dialog" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+    <button type="button" class="booking-close" data-close aria-label="Zamknij">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+
+    <h2 id="booking-title">Umów wizytę</h2>
+    <p class="booking-subtitle">Wypełnij krótki formularz — oddzwonimy, aby ustalić dokładny termin.</p>
+
+    <form id="booking-form" novalidate>
+      <div class="field">
+        <span class="field-label">Cel wizyty</span>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="cel" value="leczenie" checked />
+            <span>Leczenie</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="cel" value="cbct" />
+            <span>Badanie CBCT</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="booking-date">Preferowana data</label>
+        <input type="date" id="booking-date" name="data" class="text-input" />
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="booking-phone">Numer telefonu <span class="required">*</span></label>
+        <input type="tel" id="booking-phone" name="telefon" class="text-input" required placeholder="np. 500 100 200" />
+      </div>
+
+      <input type="text" name="honeypot" class="honeypot" tabindex="-1" autocomplete="off" />
+
+      <button type="submit" class="btn btn-filled booking-submit">Wyślij zgłoszenie</button>
+
+      <p class="booking-status" role="status"></p>
+    </form>
+  </div>
+</div>
+
+<style>
+  .booking-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .booking-modal.open {
+    display: flex;
+  }
+  .booking-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .booking-dialog {
+    position: relative;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gray);
+    border-radius: 8px;
+    padding: 40px;
+    width: 100%;
+    max-width: 460px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .booking-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: var(--text-gray);
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+  }
+  .booking-close:hover {
+    color: var(--primary-gold);
+  }
+  .booking-dialog h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: var(--text-light);
+  }
+  .booking-subtitle {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+  .field {
+    margin-bottom: 22px;
+  }
+  .field-label {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-gray);
+    margin-bottom: 10px;
+  }
+  .required {
+    color: var(--primary-gold);
+  }
+  .radio-group {
+    display: flex;
+    gap: 12px;
+  }
+  .radio-option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid var(--border-gray);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  .radio-option:has(input:checked) {
+    border-color: var(--primary-gold);
+    background-color: rgba(190, 153, 127, 0.12);
+  }
+  .radio-option input {
+    accent-color: var(--primary-gold);
+  }
+  .text-input {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-gray);
+    border-radius: 6px;
+    color: var(--text-light);
+    font-family: var(--font-body);
+    font-size: 1rem;
+  }
+  .text-input:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+  }
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  .booking-submit {
+    width: 100%;
+    margin-top: 8px;
+  }
+  .booking-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .booking-status {
+    margin: 14px 0 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .booking-status.success {
+    color: #7fbf7f;
+  }
+  .booking-status.error {
+    color: #e08a8a;
+  }
+</style>
+
+<script>
+  const modal = document.getElementById('booking-modal') as HTMLElement | null;
+  const form = document.getElementById('booking-form') as HTMLFormElement | null;
+  const statusEl = modal?.querySelector('.booking-status') as HTMLElement | null;
+  let formOpenedAt = 0;
+
+  function openModal(cel: string | null) {
+    if (!modal || !form) return;
+    if (cel === 'cbct' || cel === 'leczenie') {
+      const radio = form.querySelector(`input[name="cel"][value="${cel}"]`) as HTMLInputElement | null;
+      if (radio) radio.checked = true;
+    }
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    formOpenedAt = Date.now();
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const trigger = target.closest('a[href="#umow-wizyte"]');
+    if (trigger) {
+      e.preventDefault();
+      openModal(trigger.getAttribute('data-cel'));
+      return;
+    }
+    if (target.closest('[data-close]')) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('open')) {
+      closeModal();
+    }
+  });
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!statusEl) return;
+
+    const formData = new FormData(form);
+    const honeypot = String(formData.get('honeypot') || '');
+    const cel = String(formData.get('cel') || '');
+    const data = String(formData.get('data') || '');
+    const telefon = String(formData.get('telefon') || '').trim();
+
+    statusEl.textContent = '';
+    statusEl.className = 'booking-status';
+
+    if (telefon.replace(/[^0-9+]/g, '').length < 9) {
+      statusEl.textContent = 'Podaj poprawny numer telefonu.';
+      statusEl.classList.add('error');
+      return;
+    }
+
+    const submitBtn = form.querySelector('.booking-submit') as HTMLButtonElement | null;
+    if (submitBtn) submitBtn.disabled = true;
+
+    try {
+      const res = await fetch('/api/book.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          cel,
+          data,
+          telefon,
+          honeypot,
+          form_time: Date.now() - formOpenedAt,
+        }),
+      });
+      const result = await res.json();
+
+      if (result.success) {
+        statusEl.textContent = 'Dziękujemy! Oddzwonimy, aby ustalić termin wizyty.';
+        statusEl.classList.add('success');
+        form.reset();
+        setTimeout(closeModal, 2500);
+      } else {
+        statusEl.textContent = result.message || 'Coś poszło nie tak. Spróbuj ponownie lub zadzwoń do nas.';
+        statusEl.classList.add('error');
+      }
+    } catch {
+      statusEl.textContent = 'Błąd połączenia. Spróbuj ponownie lub zadzwoń do nas.';
+      statusEl.classList.add('error');
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
+</script>

@@ -15,6 +15,8 @@ import PageHeader from '../components/PageHeader.astro';
 
   <main class="page-container">
     <div class="container">
+      <p class="team-note fade-in">Zakres usług gabinetu będzie sukcesywnie rozszerzany wraz z rozwojem zespołu.</p>
+
       <div class="team-member fade-in">
         <img src="/team.png" alt="Karolina Wrzosek – lekarz dentysta" class="team-img" />
         <div class="team-info">
@@ -47,6 +49,13 @@ import PageHeader from '../components/PageHeader.astro';
 </Layout>
 <style>
   .page-container { padding: 90px 0 100px; }
+  .team-note {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 1.05rem;
+    max-width: 700px;
+    margin: 0 auto 60px;
+  }
   .team-member { display: flex; gap: 50px; align-items: flex-start; }
   .team-img { width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
   .team-info h2 { font-size: 2.5rem; margin-bottom: 10px; color: var(--text-light); }

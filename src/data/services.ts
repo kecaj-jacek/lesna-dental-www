@@ -42,7 +42,7 @@ export const services: Service[] = [
     slug: "higienizacja-i-profilaktyka",
     title: "Higienizacja i profilaktyka",
     desc: "Regularna higienizacja pozwala skutecznie usuwać kamień nazębny, osad i przebarwienia. Zabiegi profilaktyczne pomagają zapobiegać próchnicy oraz chorobom dziąseł i przyzębia.",
-    icon: `<path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/>`,
+    icon: `<path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/>`,
   },
   {
     slug: "wybielanie",

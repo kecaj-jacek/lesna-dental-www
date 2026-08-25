@@ -17,6 +17,10 @@ pnpm-debug.log*
 .env
 .env.production
 
+# SMTP credentials for the booking form — copy config.example.php to config.php
+# and fill in real values directly on the server, never commit it
+public/api/config.php
+
 # macOS-specific files
 .DS_Store
 
