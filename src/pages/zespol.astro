@@ -4,6 +4,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import StickyCTA from '../components/StickyCTA.astro';
 import PageHeader from '../components/PageHeader.astro';
+
+const certificates = Array.from({ length: 16 }, (_, i) => `/c${i + 1}.webp`);
 ---
 <Layout title="Nasz Zespół" description="Poznaj zespół gabinetu Leśna Dental w Kobyłce – doświadczenie, ciągłe podnoszenie kwalifikacji i indywidualne podejście do Pacjenta.">
   <Header />
@@ -33,11 +35,10 @@ import PageHeader from '../components/PageHeader.astro';
       <div class="credentials fade-in">
         <h3 class="credentials-title">Kwalifikacje i certyfikaty</h3>
         <div class="credentials-grid">
-          {[1, 2, 3].map(() => (
-            <div class="diploma-card">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary-gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"></path></svg>
-              <p>Skan dyplomu<br/>wkrótce</p>
-            </div>
+          {certificates.map((src, i) => (
+            <a class="diploma-card" href={src} target="_blank" rel="noopener">
+              <img src={src} alt={`Certyfikat kwalifikacji zawodowych ${i + 1} – Karolina Wrzosek`} loading="lazy" />
+            </a>
           ))}
         </div>
       </div>
@@ -75,33 +76,37 @@ import PageHeader from '../components/PageHeader.astro';
   }
   .credentials-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
   }
   .diploma-card {
-    border: 1px dashed var(--border-gray);
+    display: block;
     border-radius: 8px;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    text-align: center;
-    transition: border-color 0.3s;
+    overflow: hidden;
+    border: 1px solid var(--border-gray);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s, border-color 0.3s;
   }
   .diploma-card:hover {
     border-color: var(--primary-gold);
+    transform: translateY(-6px);
   }
-  .diploma-card p {
-    color: var(--text-gray);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1.5;
+  .diploma-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  @media (max-width: 900px) {
+    .credentials-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 768px) {
     .team-member { flex-direction: column; }
+  }
+
+  @media (max-width: 480px) {
     .credentials-grid { grid-template-columns: 1fr; }
   }
 </style>
