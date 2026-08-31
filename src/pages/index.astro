@@ -7,14 +7,17 @@ import CookieBanner from '../components/CookieBanner.astro';
 import { services } from '../data/services';
 ---
 
-<Layout title="Strona Główna">
+<Layout
+  title="Stomatolog Kobyłka – stomatologia dla dzieci i dorosłych, CBCT"
+  description="Leśna Dental – nowoczesny gabinet stomatologiczny w Kobyłce. Stomatologia dla dzieci i dorosłych, leczenie pod mikroskopem oraz tomografia CBCT na miejscu. Bezpłatne znieczulenie. Umów wizytę!"
+>
   <Header />
   
   <section class="hero">
     <div class="container hero-container">
       <div class="hero-text fade-in">
-        <h1>Nowoczesna stomatologia <br/><span class="gold-text">dla dorosłych i dzieci</span></h1>
-        <p>CBCT na miejscu &bull; Leczenie pod mikroskopem &bull; Bezpłatne znieczulenie</p>
+        <h1><span class="line-nowrap">Nowoczesna stomatologia</span><br/><span class="gold-text">dla dorosłych i dzieci</span></h1>
+        <p>Nowoczesny gabinet stomatologiczny w Kobyłce, w którym leczenie przebiega bez stresu i bólu, w komfortowych warunkach i z troską o każdego Pacjenta.</p>
         <div class="hero-actions">
           <a href="#umow-wizyte" class="btn btn-filled">Umów wizytę</a>
           <a href="/cbct" class="btn">Tomografia CBCT</a>
@@ -134,11 +137,14 @@ import { services } from '../data/services';
     padding: 40px 0;
   }
   .hero-text h1 {
-    font-size: 3.5rem;
+    font-size: clamp(1.3rem, 6.7vw, 3.5rem);
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.2;
     color: var(--text-light);
+  }
+  .line-nowrap {
+    white-space: nowrap;
   }
   .gold-text {
     color: var(--primary-gold);
@@ -148,7 +154,8 @@ import { services } from '../data/services';
     color: var(--text-gray);
     margin-bottom: 40px;
     letter-spacing: 0.4px;
-    white-space: nowrap;
+    max-width: 540px;
+    line-height: 1.6;
   }
   .hero-actions {
     display: flex;
@@ -363,8 +370,6 @@ import { services } from '../data/services';
     }
     .hero-image { width: 100%; opacity: 0.4; }
     .hero-gradient { background: linear-gradient(to right, #383E42 0%, rgba(56,62,66,0.7) 100%); }
-    .hero-text h1 { font-size: 2.5rem; }
-    .hero-text p { white-space: normal; }
     .hero-actions { flex-direction: column; }
   }
 </style>
