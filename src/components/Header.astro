@@ -24,8 +24,14 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     </nav>
 
     <div class="header-actions">
-      <a href="tel:+48576979469" class="phone">576 979 469</a>
-      <a href="#umow-wizyte" class="btn btn-header">Umów wizytę</a>
+      <a href="tel:+48576979469" class="phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1 .36 1.98.69 2.93a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.15-1.15a2 2 0 0 1 2.11-.45c.95.33 1.93.56 2.93.69A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>576 979 469</span>
+      </a>
+      <a href="#umow-wizyte" class="btn btn-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span>Umów wizytę</span>
+      </a>
     </div>
 
     <button class="hamburger" aria-label="Menu">
@@ -40,7 +46,10 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   {navItems.map((item) => (
     <a href={item.href} class:list={{ active: isActive(item.href) }}>{item.label}</a>
   ))}
-  <a href="#umow-wizyte" class="btn btn-header" style="margin-top: 1rem; text-align: center;">Umów wizytę</a>
+  <a href="#umow-wizyte" class="btn btn-header" style="margin-top: 1rem; justify-content: center;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+    <span>Umów wizytę</span>
+  </a>
 </div>
 
 <style>
@@ -86,9 +95,19 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     gap: 20px;
   }
   .phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  .phone:hover {
+    color: var(--primary-gold);
   }
   .btn-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 10px 20px;
   }
   
