@@ -6,7 +6,7 @@ import StickyCTA from '../components/StickyCTA.astro';
 import PageHeader from '../components/PageHeader.astro';
 
 const address = "ul. Leśna 8 lok. A.03, 05-230 Kobyłka";
-const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+const mapsUrl = "https://maps.app.goo.gl/S4teyCzJ9hKTmmxb6";
 ---
 <Layout title="Kontakt" description="Skontaktuj się z gabinetem Leśna Dental w Kobyłce – adres, telefon, e-mail oraz formularz umawiania wizyt.">
   <Header />
@@ -26,7 +26,7 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
           </div>
           <div>
             <h3>Adres</h3>
-            <p>{address}</p>
+            <p><a href={mapsUrl} target="_blank" rel="noopener noreferrer">{address}</a></p>
           </div>
         </div>
 
@@ -63,13 +63,17 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
         <a href="#umow-wizyte" class="btn btn-filled contact-cta">Umów wizytę</a>
       </div>
 
-      <div class="map-placeholder fade-in">
-        <div class="map-pin">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--primary-gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-        </div>
-        <p class="map-address">{address}</p>
-        <p class="map-note">Mapa Google będzie tutaj dostępna wkrótce</p>
-        <a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="btn map-link">Otwórz w Google Maps</a>
+      <div class="map-embed fade-in">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2437.911033911512!2d21.21426107731223!3d52.33576004985301!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471edb4f15f97f71%3A0x52fc46c6e7ba6e1c!2sLe%C5%9Bna%20Dental%20Stomatologia%20i%20Tomografia%20CBCT!5e0!3m2!1spl!2spl!4v1788781760948!5m2!1spl!2spl"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="Mapa dojazdu - Leśna Dental"
+        ></iframe>
       </div>
     </div>
   </main>
@@ -129,45 +133,28 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
     margin-top: 10px;
   }
 
-  .map-placeholder {
+  .map-embed {
     flex: 1;
     min-height: 420px;
-    border: 1px dashed var(--border-gray);
+    border: 1px solid var(--border-gray);
     border-radius: 8px;
-    background-color: var(--bg-card);
-    background-image: radial-gradient(circle at 1px 1px, rgba(190,153,127,0.25) 1px, transparent 0);
-    background-size: 24px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 12px;
-    padding: 40px;
+    overflow: hidden;
   }
-  .map-pin {
-    margin-bottom: 6px;
-  }
-  .map-address {
-    color: var(--text-light);
-    font-size: 1.1rem;
-    font-weight: 600;
-    max-width: 320px;
-  }
-  .map-note {
-    color: var(--text-gray);
-    font-size: 0.85rem;
-    margin-bottom: 10px;
-  }
-  .map-link {
-    padding: 10px 24px;
+  .map-embed iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
   }
 
   @media (max-width: 900px) {
     .contact-grid {
       flex-direction: column;
     }
-    .map-placeholder {
+    .map-embed {
+      min-height: 300px;
+    }
+    .map-embed iframe {
       min-height: 300px;
     }
   }

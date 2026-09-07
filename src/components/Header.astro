@@ -1,21 +1,28 @@
 ---
+const path = Astro.url.pathname;
+const navItems = [
+  { href: '/', label: 'Strona główna' },
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/uslugi', label: 'Usługi' },
+  { href: '/cbct', label: 'Tomografia CBCT' },
+  { href: '/zespol', label: 'Zespół' },
+  { href: '/cennik', label: 'Cennik' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 ---
 <header class="header">
   <div class="header-container">
     <a href="/" class="logo">
       <img src="/logo.svg" alt="Leśna Dental Logo" width="180" />
     </a>
-    
+
     <nav class="nav-links">
-      <a href="/">Strona główna</a>
-      <a href="/o-nas">O nas</a>
-      <a href="/uslugi">Usługi</a>
-      <a href="/cbct">CBCT</a>
-      <a href="/zespol">Zespół</a>
-      <a href="/cennik">Cennik</a>
-      <a href="/kontakt">Kontakt</a>
+      {navItems.map((item) => (
+        <a href={item.href} class:list={{ active: isActive(item.href) }}>{item.label}</a>
+      ))}
     </nav>
-    
+
     <div class="header-actions">
       <a href="tel:+48576979469" class="phone">576 979 469</a>
       <a href="#umow-wizyte" class="btn btn-header">Umów wizytę</a>
@@ -30,13 +37,9 @@
 </header>
 
 <div class="mobile-nav">
-  <a href="/">Strona główna</a>
-  <a href="/o-nas">O nas</a>
-  <a href="/uslugi">Usługi</a>
-  <a href="/cbct">CBCT</a>
-  <a href="/zespol">Zespół</a>
-  <a href="/cennik">Cennik</a>
-  <a href="/kontakt">Kontakt</a>
+  {navItems.map((item) => (
+    <a href={item.href} class:list={{ active: isActive(item.href) }}>{item.label}</a>
+  ))}
   <a href="#umow-wizyte" class="btn btn-header" style="margin-top: 1rem; text-align: center;">Umów wizytę</a>
 </div>
 
@@ -73,7 +76,8 @@
     color: var(--text-light);
     transition: color 0.3s ease;
   }
-  .nav-links a:hover {
+  .nav-links a:hover,
+  .nav-links a.active {
     color: var(--primary-gold);
   }
   .header-actions {
@@ -126,6 +130,9 @@
     border-bottom: 1px solid var(--border-gray);
     font-size: 1.1rem;
     text-transform: uppercase;
+  }
+  .mobile-nav a.active {
+    color: var(--primary-gold);
   }
 
   @media (max-width: 992px) {
