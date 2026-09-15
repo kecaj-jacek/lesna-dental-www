@@ -33,6 +33,16 @@ export const priceList: PriceCategory[] = [
         description: null,
         price: "150 - 200 zł"
       },
+      {
+        name: "Znieczulenie nasiękowe",
+        description: null,
+        price: "50 zł"
+      },
+      {
+        name: "Znieczulenie przewodowe",
+        description: null,
+        price: "50 zł"
+      },
     ]
   },
   {
