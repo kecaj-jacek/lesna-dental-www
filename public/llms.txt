@@ -1,0 +1,33 @@
+# Leśna Dental
+
+> Gabinet stomatologiczny w Kobyłce (woj. mazowieckie, okolice Wołomina, Zielonki i Marek). Stomatologia dla dzieci i dorosłych oraz tomografia CBCT na miejscu.
+
+Leśna Dental to nowoczesny gabinet stomatologiczny działający pod adresem ul. Leśna 8 lok. A.03, 05-230 Kobyłka. Obsługujemy pacjentów z Kobyłki i okolicznych miejscowości: Wołomina, Zielonki, Marek, Ząbek i Radzymina.
+
+## Usługi
+
+- Stomatologia zachowawcza (leczenie próchnicy, wypełnienia kompozytowe)
+- Stomatologia dziecięca
+- Endodoncja pod mikroskopem (leczenie kanałowe)
+- Protetyka (korony, mosty, licówki, protezy, implanty)
+- Chirurgia stomatologiczna
+- Higienizacja i profilaktyka
+- Wybielanie zębów
+- Tomografia CBCT (diagnostyka 3D na miejscu, bez konieczności wizyty w zewnętrznej pracowni)
+
+## Kontakt
+
+- Telefon: +48 576 979 469
+- E-mail: kontakt@lesnadental.pl
+- Adres: ul. Leśna 8 lok. A.03, 05-230 Kobyłka
+- Strona: https://lesnadental.pl
+
+## Strony
+
+- [Strona główna](https://lesnadental.pl/): przegląd gabinetu i usług
+- [Usługi](https://lesnadental.pl/uslugi): pełen zakres leczenia stomatologicznego
+- [Tomografia CBCT](https://lesnadental.pl/cbct): diagnostyka 3D CBCT
+- [Cennik](https://lesnadental.pl/cennik): ceny zabiegów
+- [Zespół](https://lesnadental.pl/zespol): lekarze i personel gabinetu
+- [O nas](https://lesnadental.pl/o-nas): informacje o gabinecie
+- [Kontakt](https://lesnadental.pl/kontakt): dane kontaktowe i formularz umawiania wizyt

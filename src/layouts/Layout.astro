@@ -17,6 +17,26 @@ const {
 const pageTitle = `${title} | Leśna Dental`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(image, Astro.site);
+
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "Dentist",
+	"@id": "https://lesnadental.pl/#organizacja",
+	name: "Leśna Dental",
+	url: "https://lesnadental.pl",
+	image: socialImageURL.toString(),
+	telephone: "+48576979469",
+	email: "kontakt@lesnadental.pl",
+	address: {
+		"@type": "PostalAddress",
+		streetAddress: "ul. Leśna 8 lok. A.03",
+		addressLocality: "Kobyłka",
+		postalCode: "05-230",
+		addressCountry: "PL",
+	},
+	areaServed: ["Kobyłka", "Wołomin", "Zielonka", "Marki", "Ząbki", "Radzymin"],
+	medicalSpecialty: "Dentistry",
+};
 ---
 
 <!doctype html>
@@ -49,6 +69,8 @@ const socialImageURL = new URL(image, Astro.site);
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={socialImageURL} />
+
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	</head>
 	<body>
 		<slot />
