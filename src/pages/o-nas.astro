@@ -44,7 +44,7 @@ import PageHeader from '../components/PageHeader.astro';
       </div>
 
       <div class="signature fade-in">
-        <p class="author">Karolina Wrzosek</p>
+        <img class="author" src="/karolina-wrzosek-podpis.png" alt="Podpis: Karolina Wrzosek" />
         <p class="author-subtitle">właścicielka Leśna Dental, lekarz dentysta</p>
       </div>
     </div>
@@ -139,9 +139,9 @@ import PageHeader from '../components/PageHeader.astro';
     margin-top: 20px;
   }
   .author {
-    font-family: var(--font-handwritten);
-    font-size: 3rem;
-    color: var(--primary-gold);
+    display: inline-block;
+    height: 48px;
+    width: auto;
     margin-bottom: 5px;
   }
   .author-subtitle {
